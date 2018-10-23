@@ -4,15 +4,21 @@
 import { Switch, Route } from 'react-router-dom';
 import React from 'react';
 
-import UserLayout from './layouts/UserLayout';
-import BasicLayout from './layouts/BasicLayout';
+import { routerConfig } from './routerConfig';
+
 
 // 按照 Layout 归类分组可以按照如下方式组织路由
 const router = () => {
   return (
     <Switch>
-      <Route path="/user" component={UserLayout} />
-      <Route path="/" component={BasicLayout} />
+      {routerConfig.map((item, index) => {
+          return item.layout ? (
+            <Route
+              path={item.path}
+              component={item.layout}
+            />
+          ) : null;
+        })}
     </Switch>
   );
 };
