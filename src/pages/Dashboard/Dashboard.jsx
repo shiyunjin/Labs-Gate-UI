@@ -29,15 +29,6 @@ export default class Dashboard extends Component {
       <div className="dashboard-page">
         <DisplayCard />
 
-        <TabChart />
-
-        <PieDoughnutChart />
-
-        <ProgressTable />
-
-        <EditableTable />
-
-        <ChartBar />
       </div>
     );
   }
