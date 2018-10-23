@@ -6,6 +6,7 @@ import { getRouterData } from './utils/utils';
 import { asideMenuConfig } from './menuConfig';
 
 import BasicLayout from './layouts/BasicLayout';
+import BlankLayout from './layouts/BlankLayout';
 import UserLayout from './layouts/UserLayout';
 import UserLogin from './pages/UserLogin';
 import Dashboard from './pages/Dashboard';
@@ -90,17 +91,22 @@ const routerConfig = [
     layout: BasicLayout,
   },
   {
-    path: '/exception/404',
-    component: NotFound,
-    layout: BasicLayout,
-  },
-  {
     path: '/user/login',
     component: UserLogin,
     layout: UserLayout,
+  },
+  {
+    path: '/',
+    component: UserLogin,
+    layout: UserLayout,
+  },
+  {
+    path: '',
+    component: NotFound,
+    layout: BlankLayout,
   },
 ];
 
 const routerData = getRouterData(routerConfig, asideMenuConfig);
 
-export { routerData };
+export { routerData, routerConfig };
