@@ -21,7 +21,7 @@ export default class Footer extends PureComponent {
           <div className="copyright">
             © 2018 System designed by{' '}
             <a
-              href="https://gitee.com/shiyunjin/SchoolNetwork"
+              href="https://github.com/shiyunjin/SchoolNetwork"
               target="_blank"
               className="copyright-link"
               rel="noopener noreferrer"
