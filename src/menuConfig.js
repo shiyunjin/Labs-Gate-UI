@@ -27,7 +27,7 @@ const asideMenuConfig = [
     authority: ['user', 'admin'],
   },
   {
-    name: '图表页',
+    name: '网络控制',
     path: '/chart',
     icon: 'chart1',
     authority: ['user', 'admin'],
@@ -40,7 +40,7 @@ const asideMenuConfig = [
     ],
   },
   {
-    name: '表格页',
+    name: '网络状态',
     path: '/table',
     icon: 'table',
     authority: ['user', 'admin'],
@@ -58,7 +58,7 @@ const asideMenuConfig = [
     ],
   },
   {
-    name: '列表页',
+    name: '网络设备',
     path: '/list',
     icon: 'ul-list',
     authority: ['user', 'admin'],
@@ -74,7 +74,7 @@ const asideMenuConfig = [
     ],
   },
   {
-    name: '内容页',
+    name: '用户管理',
     path: '/portlets',
     icon: 'publish',
     authority: ['user', 'admin'],
@@ -90,7 +90,7 @@ const asideMenuConfig = [
     ],
   },
   {
-    name: '结果页',
+    name: '安全中心',
     path: '/result',
     icon: 'result',
     authority: ['user', 'admin'],
