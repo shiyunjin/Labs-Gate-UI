@@ -23,17 +23,18 @@ import List from './pages/List';
 import CardList from './pages/CardList';
 import BasicTable from './pages/BasicTable';
 import TableDisplay from './pages/TableDisplay';
+
 import NotFound from './pages/NotFound';
 
-const routerConfig = [
-  {
-    path: '/dashboard',
-    component: Dashboard,
-    layout: BasicLayout,
-  },
+var routerConfig = [
   {
     path: '/table/basic-table',
     component: BasicTable,
+    layout: BasicLayout,
+  },
+  {
+    path: '/portlets/base',
+    component: Portlets,
     layout: BasicLayout,
   },
   {
@@ -67,8 +68,8 @@ const routerConfig = [
     layout: BasicLayout,
   },
   {
-    path: '/portlets/base',
-    component: Portlets,
+    path: '/dashboard',
+    component: Dashboard,
     layout: BasicLayout,
   },
   {
@@ -96,6 +97,9 @@ const routerConfig = [
     component: UserLogin,
     layout: UserLayout,
   },
+];
+
+const routerBase = [
   {
     path: '/',
     component: null,
@@ -107,6 +111,8 @@ const routerConfig = [
     layout: BlankLayout,
   },
 ];
+
+routerConfig = routerConfig.concat(routerBase);
 
 const routerData = getRouterData(routerConfig, asideMenuConfig);
 
