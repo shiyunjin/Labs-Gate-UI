@@ -46,8 +46,8 @@ asideMenuConfig.forEach(getRedirect);
 
 // 设置默认的皮肤配置，支持 dark 和 light 两套皮肤配置
 const theme = typeof THEME === 'undefined' ? 'dark' : THEME;
-@withRouter
-class BasicLayout extends Component { // eslint-disable-line
+
+class BasicLayout extends Component {
   static displayName = 'BasicLayout';
 
   static propTypes = {};
@@ -286,7 +286,7 @@ class BasicLayout extends Component { // eslint-disable-line
               })}
 
               {/* 首页默认重定向到 /dashboard */}
-              <Redirect exact from="/" to="/dashboard" />
+              <Redirect exact from="/" to="/user" />
             </Switch>
           </Layout.Main>
         </Layout.Section>
