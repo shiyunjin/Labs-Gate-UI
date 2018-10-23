@@ -7,6 +7,7 @@ import { asideMenuConfig } from './menuConfig';
 
 import BasicLayout from './layouts/BasicLayout';
 import BlankLayout from './layouts/BlankLayout';
+import HomeLayout from './layouts/HomeLayout';
 import UserLayout from './layouts/UserLayout';
 import UserLogin from './pages/UserLogin';
 import Dashboard from './pages/Dashboard';
@@ -97,8 +98,8 @@ const routerConfig = [
   },
   {
     path: '/',
-    component: UserLogin,
-    layout: UserLayout,
+    component: null,
+    layout: HomeLayout,
   },
   {
     path: '',

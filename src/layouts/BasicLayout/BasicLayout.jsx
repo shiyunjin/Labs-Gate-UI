@@ -284,9 +284,6 @@ class BasicLayout extends Component {
                   <Redirect key={index} exact from={item.from} to={item.to} />
                 );
               })}
-
-              {/* 首页默认重定向到 /dashboard */}
-              <Redirect exact from="/" to="/user" />
             </Switch>
           </Layout.Main>
         </Layout.Section>
