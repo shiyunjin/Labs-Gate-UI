@@ -24,13 +24,13 @@ const asideMenuConfig = [
     name: 'Dashboard',
     path: '/dashboard',
     icon: 'home2',
-    authority: ['user','admin'],
+    authority: ['user', 'admin'],
   },
   {
     name: '图表页',
     path: '/chart',
     icon: 'chart1',
-    authority: ['user','admin'],
+    authority: ['user', 'admin'],
     children: [
       {
         name: '常用图表',
@@ -43,7 +43,7 @@ const asideMenuConfig = [
     name: '表格页',
     path: '/table',
     icon: 'table',
-    authority: ['user','admin'],
+    authority: ['user', 'admin'],
     children: [
       {
         name: '基础表格',
@@ -53,7 +53,7 @@ const asideMenuConfig = [
       {
         name: '常用竖向表格',
         path: '/table/table-display',
-        authority: ['user','admin'],
+        authority: ['user', 'admin'],
       },
     ],
   },
@@ -61,7 +61,7 @@ const asideMenuConfig = [
     name: '列表页',
     path: '/list',
     icon: 'ul-list',
-    authority: ['user','admin'],
+    authority: ['user', 'admin'],
     children: [
       {
         name: '搜索列表',
@@ -77,7 +77,7 @@ const asideMenuConfig = [
     name: '内容页',
     path: '/portlets',
     icon: 'publish',
-    authority: ['user','admin'],
+    authority: ['user', 'admin'],
     children: [
       {
         name: '基础详情页',
@@ -93,7 +93,7 @@ const asideMenuConfig = [
     name: '结果页',
     path: '/result',
     icon: 'result',
-    authority: ['user','admin'],
+    authority: ['user', 'admin'],
     children: [
       {
         name: '成功',
