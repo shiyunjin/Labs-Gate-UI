@@ -19,14 +19,14 @@ export default class Footer extends PureComponent {
             <Logo />
           </div>
           <div className="copyright">
-            © 2018 Theme designed by{' '}
+            © 2018 System designed by{' '}
             <a
-              href="https://github.com/alibaba/ice"
+              href="https://gitee.com/shiyunjin/SchoolNetwork"
               target="_blank"
               className="copyright-link"
               rel="noopener noreferrer"
             >
-              ICE
+              Shiyunjin
             </a>
           </div>
         </div>
