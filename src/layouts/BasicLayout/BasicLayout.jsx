@@ -326,7 +326,7 @@ const withLogoutReducer = injectReducer({
 });
 
 const withAuthReducer = injectReducer({
-  key: 'profile',
+  key: 'auth',
   reducer: userAuthorityReducer,
 });
 
