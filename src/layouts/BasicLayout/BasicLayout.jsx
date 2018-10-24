@@ -12,10 +12,16 @@ import { compose } from 'redux';
 
 import injectReducer from '../../utils/injectReducer';
 import Authorized from './../../utils/Authorized';
+
 import profileReducer from '../../store/userProfile/reducer';
-import logoutReducer from '../../store/userLogout/reducer';
 import { userProfile } from '../../store/userProfile/action';
+
+import logoutReducer from '../../store/userLogout/reducer';
 import { userLogout } from '../../store/userLogout/action';
+
+import userAuthorityReducer from '../../store/userAuthority/reducer';
+import { userAuthority } from '../../store/userAuthority/action';
+
 import Header from '../../components/Header/Header';
 import Footer from './../../components/Footer';
 import Logo from './../../components/Logo';
@@ -65,6 +71,7 @@ class BasicLayout extends Component {
   componentDidMount() {
     this.enquireScreenRegister();
     this.props.userProfile();
+    this.props.userAuthority();
   }
 
   /**
@@ -296,6 +303,7 @@ class BasicLayout extends Component {
 const mapDispatchToProps = {
   userProfile,
   userLogout,
+  userAuthority,
 };
 
 const mapStateToProps = (state) => {
@@ -317,8 +325,14 @@ const withLogoutReducer = injectReducer({
   reducer: logoutReducer,
 });
 
+const withAuthReducer = injectReducer({
+  key: 'profile',
+  reducer: userAuthorityReducer,
+});
+
 export default compose(
   withProfileReducer,
   withLogoutReducer,
-  withConnect
+  withConnect,
+  withAuthReducer,
 )(BasicLayout);

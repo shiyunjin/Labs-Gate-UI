@@ -1,0 +1,9 @@
+/*
+ *
+ * userAuthority constants
+ *
+ */
+
+export const USER_AUTHORITY_REQUEST = 'PRO/USER_AUTHORITY_REQUEST';
+export const USER_AUTHORITY_FAILURE = 'PRO/USER_AUTHORITY_FAILURE';
+export const USER_AUTHORITY_SUCCESS = 'PRO/USER_AUTHORITY_SUCCESS';

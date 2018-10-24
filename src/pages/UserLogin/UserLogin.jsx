@@ -86,8 +86,8 @@ class UserLogin extends Component {
     ];
 
     const initFields = {
-      name: '',
-      passwd: '',
+      username: '',
+      password: '',
       checkbox: false,
     };
 

@@ -17,18 +17,21 @@ const router = () => {
             return item.layout ? (
               <Route
                 exact
+                key={index}
                 path={item.path}
                 component={item.layout}
               />
             ) : (
               <Route
                 exact
+                key={index}
                 path={item.path}
                 component={BasicLayout}
               />
             );
           else return (
             <Route
+              key={index}
               component={item.layout}
             />
           )

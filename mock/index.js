@@ -1,12 +1,12 @@
 module.exports = {
-  'GET /api/profile': {
+  'GET /api/v1/profile': {
     name: '淘小宝',
     department: '技术部',
     avatar: 'https://img.alicdn.com/tfs/TB1L6tBXQyWBuNjy0FpXXassXXa-80-80.png',
     userid: 10001,
   },
 
-  'POST /api/login': (req, res) => {
+  'POST /api/v1/login': (req, res) => {
     const { password, username } = req.body;
     if (username === 'admin' && password === 'admin') {
       res.send({
@@ -29,11 +29,19 @@ module.exports = {
     }
   },
 
-  'POST /api/logout': (req, res) => {
+  'POST /api/v1/logout': (req, res) => {
     res.send({
       status: 200,
       statusText: 'ok',
       currentAuthority: 'guest',
+    });
+  },
+
+  'GET /api/v1/authority': (req, res) => {
+    res.send({
+      status: 200,
+      statusText: 'ok',
+      currentAuthority: 'admin',
     });
   },
 };
