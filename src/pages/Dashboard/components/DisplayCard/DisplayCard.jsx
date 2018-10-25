@@ -39,7 +39,7 @@ export default class extends Component {
         <Row wrap>
           <Col xxs="24" s="12" l="6" style={styles.item}>
             <div style={styles.title} className="title">
-              昨日内容浏览次数
+              当前实验室机器数量
               <span style={styles.extraIcon}>
                 <Balloon
                   trigger={
@@ -53,7 +53,7 @@ export default class extends Component {
                   triggerType="hover"
                   closable={false}
                 >
-                  这里是数据说明
+                  目前系统中所有可管理到机器数量
                 </Balloon>
               </span>
             </div>
@@ -67,7 +67,7 @@ export default class extends Component {
           </Col>
           <Col xxs="24" s="12" l="6" style={styles.item}>
             <div style={styles.title} className="title">
-              昨日账号主页浏览人数
+              当前网络设备数量
               <span style={styles.extraIcon}>
                 <Balloon
                   trigger={
@@ -81,7 +81,7 @@ export default class extends Component {
                   triggerType="hover"
                   closable={false}
                 >
-                  这里是数据说明
+                  目前系统中可管理的网络设备数量
                 </Balloon>
               </span>
             </div>
@@ -95,7 +95,7 @@ export default class extends Component {
           </Col>
           <Col xxs="24" s="12" l="6" style={styles.item}>
             <div style={styles.title} className="title">
-              昨日活跃粉丝数
+              当前实验室数量
               <span style={styles.extraIcon}>
                 <Balloon
                   trigger={
@@ -109,7 +109,7 @@ export default class extends Component {
                   triggerType="hover"
                   closable={false}
                 >
-                  这里是数据说明
+                  目前系统中划分到实验室的数量
                 </Balloon>
               </span>
             </div>
@@ -123,7 +123,7 @@ export default class extends Component {
           </Col>
           <Col xxs="24" s="12" l="6" style={styles.item}>
             <div style={styles.title} className="title">
-              昨日粉丝数
+              系统用户数量
               <span style={styles.extraIcon}>
                 <Balloon
                   trigger={
@@ -137,7 +137,7 @@ export default class extends Component {
                   triggerType="hover"
                   closable={false}
                 >
-                  这里是数据说明
+                  当前系统用户数量
                 </Balloon>
               </span>
             </div>

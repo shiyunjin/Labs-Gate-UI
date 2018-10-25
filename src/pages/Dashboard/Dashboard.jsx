@@ -3,16 +3,8 @@
 import React, { Component } from 'react';
 
 import DisplayCard from './components/DisplayCard';
-
-import TabChart from './components/TabChart';
-
-import PieDoughnutChart from './components/PieDoughnutChart';
-
-import ProgressTable from './components/ProgressTable';
-
-import EditableTable from './components/EditableTable';
-
-import ChartBar from './components/ChartBar';
+import LatestNews from './components/LatestNews';
+import QuickNavigation from './components/QuickNavigation';
 
 import './Dashboard.scss';
 
@@ -28,6 +20,8 @@ export default class Dashboard extends Component {
     return (
       <div className="dashboard-page">
         <DisplayCard />
+        <QuickNavigation/>
+        <LatestNews/>
 
       </div>
     );

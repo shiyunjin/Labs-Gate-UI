@@ -27,83 +27,52 @@ const asideMenuConfig = [
     authority: ['user', 'admin'],
   },
   {
-    name: '网络控制',
-    path: '/chart',
+    name: '实验室控制',
+    path: '/rom',
     icon: 'chart1',
     authority: ['user', 'admin'],
     children: [
       {
-        name: '常用图表',
-        path: '/chart/chart-list',
-        authority: 'admin',
-      },
-    ],
-  },
-  {
-    name: '网络状态',
-    path: '/table',
-    icon: 'table',
-    authority: ['user', 'admin'],
-    children: [
-      {
-        name: '基础表格',
-        path: '/table/basic-table',
-        authority: 'admin',
+        name: '网络管理',
+        path: '/rom/control',
       },
       {
-        name: '常用竖向表格',
-        path: '/table/table-display',
-        authority: ['user', 'admin'],
-      },
-    ],
-  },
-  {
-    name: '网络设备',
-    path: '/list',
-    icon: 'ul-list',
-    authority: ['user', 'admin'],
-    children: [
-      {
-        name: '搜索列表',
-        path: '/list/article-list',
-      },
-      {
-        name: '卡片列表',
-        path: '/list/card-list',
+        name: '机器管理',
+        path: '/rom/machine',
       },
     ],
   },
   {
     name: '用户管理',
-    path: '/portlets',
+    path: '/user',
     icon: 'publish',
+    authority: ['admin'],
+  },
+  {
+    name: '网络状态',
+    path: '/status',
+    icon: 'table',
     authority: ['user', 'admin'],
-    children: [
-      {
-        name: '基础详情页',
-        path: '/portlets/base',
-      },
-      {
-        name: '条款协议页',
-        path: '/portlets/terms',
-      },
-    ],
+  },
+  {
+    name: '网络设备',
+    path: '/device',
+    icon: 'ul-list',
+    authority: ['user', 'admin'],
   },
   {
     name: '安全中心',
-    path: '/result',
-    icon: 'result',
+    path: '/security',
+    icon: 'key',
     authority: ['user', 'admin'],
-    children: [
-      {
-        name: '成功',
-        path: '/result/success',
-      },
-      {
-        name: '失败',
-        path: '/result/fail',
-      },
-    ],
+  },
+  {
+    name: '基础详情页',
+    path: '/portlets/base',
+  },
+  {
+    name: '条款协议页',
+    path: '/portlets/terms',
   },
 ];
 

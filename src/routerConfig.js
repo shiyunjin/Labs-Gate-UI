@@ -24,17 +24,28 @@ import CardList from './pages/CardList';
 import BasicTable from './pages/BasicTable';
 import TableDisplay from './pages/TableDisplay';
 
+import RomControl from './pages/RomControl';
+
+import RomMachine from './pages/RomMachine';
+
+import Status from './pages/Status';
+
+import Device from './pages/Device';
+
+import Security from './pages/Security';
+
+import User from './pages/User';
 import NotFound from './pages/NotFound';
 
 var routerConfig = [
   {
-    path: '/table/basic-table',
-    component: BasicTable,
+    path: '/portlets/terms',
+    component: Terms,
     layout: BasicLayout,
   },
   {
-    path: '/portlets/base',
-    component: Portlets,
+    path: '/result/fail',
+    component: Fail,
     layout: BasicLayout,
   },
   {
@@ -63,18 +74,18 @@ var routerConfig = [
     layout: BasicLayout,
   },
   {
-    path: '/result/fail',
-    component: Fail,
+    path: '/table/basic-table',
+    component: BasicTable,
+    layout: BasicLayout,
+  },
+  {
+    path: '/portlets/base',
+    component: Portlets,
     layout: BasicLayout,
   },
   {
     path: '/dashboard',
     component: Dashboard,
-    layout: BasicLayout,
-  },
-  {
-    path: '/portlets/terms',
-    component: Terms,
     layout: BasicLayout,
   },
   {
@@ -96,6 +107,36 @@ var routerConfig = [
     path: '/user/login',
     component: UserLogin,
     layout: UserLayout,
+  },
+  {
+    path: '/rom/control',
+    layout: BasicLayout,
+    component: RomControl,
+  },
+  {
+    path: '/rom/machine',
+    layout: BasicLayout,
+    component: RomMachine,
+  },
+  {
+    path: '/status',
+    layout: BasicLayout,
+    component: Status,
+  },
+  {
+    path: '/device',
+    layout: BasicLayout,
+    component: Device,
+  },
+  {
+    path: '/security',
+    layout: BasicLayout,
+    component: Security,
+  },
+  {
+    path: '/user',
+    layout: BasicLayout,
+    component: User,
   },
 ];
 
