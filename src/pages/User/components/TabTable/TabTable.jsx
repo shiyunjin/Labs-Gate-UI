@@ -10,9 +10,8 @@ const TabPane = Tab.TabPane;
 
 const tabs = [
   { tab: '全部', key: 'all' },
-  { tab: '已发布', key: 'inreview' },
-  { tab: '审核中', key: 'released' },
-  { tab: '已拒绝', key: 'rejected' },
+  { tab: '用户', key: 'user' },
+  { tab: '管理员', key: 'admin' },
 ];
 
 export default class TabTable extends Component {
@@ -30,22 +29,22 @@ export default class TabTable extends Component {
     };
     this.columns = [
       {
-        title: '标题',
-        dataIndex: 'title',
-        key: 'title',
+        title: '用户名',
+        dataIndex: 'username',
+        key: 'username',
       },
       {
-        title: '作者',
-        dataIndex: 'author',
-        key: 'author',
+        title: '姓名',
+        dataIndex: 'name',
+        key: 'name',
       },
       {
-        title: '状态',
-        dataIndex: 'status',
-        key: 'status',
+        title: '权限',
+        dataIndex: 'auth',
+        key: 'auth',
       },
       {
-        title: '发布时间',
+        title: '创建时间',
         dataIndex: 'date',
         key: 'date',
       },
@@ -72,7 +71,7 @@ export default class TabTable extends Component {
 
   componentDidMount() {
     axios
-      .get('/mock/tab-table.json')
+      .get('/api/v1/user/list')
       .then((response) => {
         console.log(response.data.data);
         this.setState({

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Dialog, Button, Form, Input, Field } from '@icedesign/base';
+import { Dialog, Button, Form, Input, Field, Select } from '@icedesign/base';
 
 const FormItem = Form.Item;
 
@@ -77,34 +77,29 @@ export default class EditDialog extends Component {
           title="编辑"
         >
           <Form direction="ver" field={this.field}>
-            <FormItem label="标题：" {...formItemLayout}>
+            <FormItem label="姓名：" {...formItemLayout}>
               <Input
-                {...init('title', {
+                {...init('name', {
                   rules: [{ required: true, message: '必填选项' }],
                 })}
               />
             </FormItem>
 
-            <FormItem label="作者：" {...formItemLayout}>
-              <Input
-                {...init('author', {
+            <FormItem label="权限：" {...formItemLayout}>
+              <Select
+                {...init('auth', {
                   rules: [{ required: true, message: '必填选项' }],
                 })}
-              />
+              >
+                <Option value="user">user</Option>
+                <Option value="admin">admin</Option>
+              </Select>
             </FormItem>
 
-            <FormItem label="状态：" {...formItemLayout}>
+            <FormItem label="密码：" {...formItemLayout}>
               <Input
-                {...init('status', {
-                  rules: [{ required: true, message: '必填选项' }],
-                })}
-              />
-            </FormItem>
-
-            <FormItem label="发布时间：" {...formItemLayout}>
-              <Input
-                {...init('date', {
-                  rules: [{ required: true, message: '必填选项' }],
+                {...init('password', {
+                  rules: [{ required: false, message: '可选选项' }],
                 })}
               />
             </FormItem>

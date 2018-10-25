@@ -43,4 +43,26 @@ module.exports = {
       currentAuthority: 'admin',
     });
   },
+
+  'GET /api/v1/user/list': {
+    "status": 200,
+    "statusText": "ok",
+    "data": {
+      "all": [
+        {
+          "username": "syj",
+          "name": "石蕴金",
+          "auth": "user",
+          "date": "2017-02-11",
+        },
+      ],
+      "user": [
+  
+      ],
+      "admin": [
+  
+      ],
+    },
+  },
+  
 };
