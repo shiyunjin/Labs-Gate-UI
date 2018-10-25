@@ -82,14 +82,14 @@ export default class Header extends PureComponent {
                   }
                   className="user-avatar"
                 />
-                <div className="user-profile">
+                <div className="user-profile" style={{ textAlign: 'left' }}>
                   <span className="user-name" style={{ fontSize: '13px' }}>
                     {profile.name}
                   </span>
                   <br />
                   <span
                     className="user-department"
-                    style={{ fontSize: '12px', color: '#999' }}
+                    style={{ fontSize: '12px', color: '#999', textTransform: 'capitalize' }}
                   >
                     {profile.department}
                   </span>
@@ -105,9 +105,6 @@ export default class Header extends PureComponent {
             className="user-profile-menu"
           >
             <ul>
-              <li className="user-profile-menu-item">
-                <FoundationSymbol type="person" size="small" />我的主页
-              </li>
               <li className="user-profile-menu-item">
                 <FoundationSymbol type="repair" size="small" />设置
               </li>

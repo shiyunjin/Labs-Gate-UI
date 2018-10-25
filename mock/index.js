@@ -1,9 +1,8 @@
 module.exports = {
   'GET /api/v1/profile': {
-    name: '淘小宝',
-    department: '技术部',
+    name: '石蕴金',
+    department: 'user',
     avatar: 'https://img.alicdn.com/tfs/TB1L6tBXQyWBuNjy0FpXXassXXa-80-80.png',
-    userid: 10001,
   },
 
   'POST /api/v1/login': (req, res) => {
