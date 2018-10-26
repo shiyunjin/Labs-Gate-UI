@@ -110,5 +110,10 @@ module.exports = {
       });
     }
   },
+
+  'POST /api/v1/user/add': {
+    "status": 200,
+    "statusText": "ok",
+  },
   
 };

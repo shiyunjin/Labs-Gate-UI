@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import IceContainer from '@icedesign/container';
-import { Tab, Feedback } from '@icedesign/base';
+import { Tab, Feedback, Button } from '@icedesign/base';
 import axios from 'axios';
 import CustomTable from './components/CustomTable';
 import EditDialog from './components/EditDialog';
 import DeleteBalloon from './components/DeleteBalloon';
+import AddDialog from './components/AddDialog';
 
 const TabPane = Tab.TabPane;
 
@@ -80,7 +81,7 @@ export default class TabTable extends Component {
       .catch((error) => {
         console.log(error);
       });
-  }
+  };
 
   getFormValues = (dataIndex, values) => {
     const { dataSource, tabKey } = this.state;
@@ -96,6 +97,10 @@ export default class TabTable extends Component {
           dataSource,
         });
       });
+  };
+
+  addUserAction = (values) => {
+    this.componentDidMount();
   };
 
   handleRemove = (value, index, values) => {
@@ -140,6 +145,9 @@ export default class TabTable extends Component {
               );
             })}
           </Tab>
+          <AddDialog
+            addUserAction={this.addUserAction}
+          />
         </IceContainer>
       </div>
     );
