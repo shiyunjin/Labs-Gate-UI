@@ -13,7 +13,6 @@ import UserLogin from './pages/UserLogin';
 import Dashboard from './pages/Dashboard';
 import Charts from './pages/Charts';
 import Portlets from './pages/Portlets';
-import Terms from './pages/Terms';
 import Result from './pages/Result';
 import Fail from './pages/Fail';
 import ServerError from './pages/ServerError';
@@ -35,22 +34,18 @@ import Device from './pages/Device';
 import Security from './pages/Security';
 
 import User from './pages/User';
+
 import NotFound from './pages/NotFound';
 
 var routerConfig = [
   {
-    path: '/portlets/terms',
-    component: Terms,
-    layout: BasicLayout,
-  },
-  {
-    path: '/result/fail',
-    component: Fail,
-    layout: BasicLayout,
-  },
-  {
     path: '/table/table-display',
     component: TableDisplay,
+    layout: BasicLayout,
+  },
+  {
+    path: '/exception/403',
+    component: Forbidden,
     layout: BasicLayout,
   },
   {
@@ -94,8 +89,8 @@ var routerConfig = [
     layout: BasicLayout,
   },
   {
-    path: '/exception/403',
-    component: Forbidden,
+    path: '/result/fail',
+    component: Fail,
     layout: BasicLayout,
   },
   {

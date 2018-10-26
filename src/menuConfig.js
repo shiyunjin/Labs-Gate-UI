@@ -70,10 +70,6 @@ const asideMenuConfig = [
     name: '基础详情页',
     path: '/portlets/base',
   },
-  {
-    name: '条款协议页',
-    path: '/portlets/terms',
-  },
 ];
 
 export { headerMenuConfig, asideMenuConfig };

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SettingsForm from './components/SettingsForm';
+import PassForm from './components/PassForm';
 
 export default class Security extends Component {
   static displayName = 'Security';
@@ -12,7 +12,7 @@ export default class Security extends Component {
   render() {
     return (
       <div className="security-page">
-        <SettingsForm />
+        <PassForm />
       </div>
     );
   }

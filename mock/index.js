@@ -115,5 +115,10 @@ module.exports = {
     "status": 200,
     "statusText": "ok",
   },
+
+  'POST /api/v1/user/pass': {
+    "status": 200,
+    "statusText": "ok",
+  },
   
 };

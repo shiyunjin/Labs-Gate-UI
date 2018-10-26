@@ -49,7 +49,6 @@ export const userAuthority = (params) => {
       if (response.data.status === 200) {
         setAuthority(response.data.currentAuthority);
         reloadAuthorized();
-        console.info(response.data);
 
         if (!response.data.currentAuthority || response.data.currentAuthority == "guest") {
           dispatch(push('/user/login'));
