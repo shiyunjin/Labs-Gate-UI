@@ -120,5 +120,62 @@ module.exports = {
     "status": 200,
     "statusText": "ok",
   },
+
+  'GET /api/v1/rom/list': {
+    "status": 200,
+    "statusText": "ok",
+    "data": {
+      tabs: [
+        { tab: '3楼', key: 0 },
+        { tab: '4楼', key: 1 },
+        { tab: '5楼', key: 2 },
+        { tab: '6楼', key: 3 },
+      ],
+      dataSource: {
+        0:[
+          {
+            name: '教六603',
+            code: 'dx603',
+            desc: '本实验室机器数量：50台',
+            acl: !true,
+          },
+          {
+            name: '教六601',
+            code: 'dx601',
+            desc: '本实验室机器数量：50台',
+            acl: true,
+          },
+          {
+            name: '教六602',
+            code: 'dx602',
+            desc: '本实验室机器数量：50台',
+            acl: !true,
+          },
+        ],
+        1:[
+          {
+            name: '教六603',
+            code: 'dx603',
+            desc: '本实验室机器数量：50台',
+            acl: !true,
+          },
+          {
+            name: '教六601',
+            code: 'dx601',
+            desc: '本实验室机器数量：50台',
+            acl: true,
+          },
+        ],
+        2:[
+          {
+            name: '教六603',
+            code: 'dx603',
+            desc: '本实验室机器数量：50台',
+            acl: !true,
+          },
+        ],
+      },
+    },
+  },
   
 };

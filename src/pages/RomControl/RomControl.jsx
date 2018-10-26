@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import BasicTab from './components/BasicTab';
-import ServiceCard from './components/ServiceCard';
+
 
 export default class RomControl extends Component {
   static displayName = 'RomControl';
@@ -14,7 +14,6 @@ export default class RomControl extends Component {
     return (
       <div className="rom-page">
         <BasicTab />
-        <ServiceCard />
       </div>
     );
   }

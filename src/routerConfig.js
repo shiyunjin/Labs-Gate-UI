@@ -104,6 +104,11 @@ var routerConfig = [
     layout: UserLayout,
   },
   {
+    path: '/rom/control/:code',
+    layout: BasicLayout,
+    component: RomControl,
+  },
+  {
     path: '/rom/control',
     layout: BasicLayout,
     component: RomControl,
