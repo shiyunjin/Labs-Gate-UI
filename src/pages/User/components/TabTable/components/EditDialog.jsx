@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Dialog, Button, Form, Input, Field, Select } from '@icedesign/base';
+import axios from 'axios';
 
 const FormItem = Form.Item;
 
@@ -13,6 +14,10 @@ export default class EditDialog extends Component {
     this.state = {
       visible: false,
       dataIndex: null,
+      resetInput: false,
+      resetInputText: null,
+      disableReset: false,
+      resetButton: true,
     };
     this.field = new Field(this);
   }
@@ -32,6 +37,24 @@ export default class EditDialog extends Component {
     });
   };
 
+  resetPass = (id) => {
+    this.setState({
+      disableReset: true,
+    });
+    axios
+    .post('/api/v1/user/reset',{
+      id: this.props.record.id,
+    })
+    .then((response) => {
+      console.info(response);
+      this.setState({
+        resetButton: false,
+        resetInputText: response.data.data,
+        resetInput: true,
+      });
+    })
+  };
+
   onOpen = (index, record) => {
     this.field.setValues({ ...record });
     this.setState({
@@ -49,6 +72,7 @@ export default class EditDialog extends Component {
   render() {
     const init = this.field.init;
     const { index, record } = this.props;
+    const { resetButton, resetInput, disableReset, resetInputText } = this.state;
     const formItemLayout = {
       labelCol: {
         fixedSpan: 6,
@@ -97,11 +121,17 @@ export default class EditDialog extends Component {
             </FormItem>
 
             <FormItem label="密码：" {...formItemLayout}>
-              <Input
-                {...init('password', {
-                  rules: [{ required: false, message: '可选选项' }],
-                })}
-              />
+              {resetButton ?
+                <Button
+                  size="small"
+                  type="primary"
+                  onClick={this.resetPass}
+                  disabled={disableReset}
+                >
+                  重置密码
+                </Button>
+              : null}
+              {resetInput ? <Input value={resetInputText} /> : null}
             </FormItem>
           </Form>
         </Dialog>

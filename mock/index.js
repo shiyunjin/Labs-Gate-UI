@@ -50,19 +50,65 @@ module.exports = {
     "data": {
       "all": [
         {
+          "id": "123123",
           "username": "syj",
           "name": "石蕴金",
-          "auth": "user",
+          "auth": "admin",
           "date": "2017-02-11",
+        },
+        {
+          "id": "321321",
+          "username": "test",
+          "name": "test",
+          "auth": "user",
+          "date": "2017-02-12",
         },
       ],
       "user": [
-  
+        {
+          "id": "321321",
+          "username": "test",
+          "name": "test",
+          "auth": "user",
+          "date": "2017-02-12",
+        },
       ],
       "admin": [
-  
+        {
+          "id": "123123",
+          "username": "syj",
+          "name": "石蕴金",
+          "auth": "admin",
+          "date": "2017-02-11",
+        },
       ],
     },
+  },
+
+  'POST /api/v1/user/reset': {
+    "status": 200,
+    "statusText": "ok",
+    "data": "newpasshere",
+  },
+
+  'POST /api/v1/user/edit': {
+    "status": 200,
+    "statusText": "ok",
+  },
+
+  'POST /api/v1/user/del': (req, res) => {
+    const { id, name, auth } = req.body;
+    if (id == '123123') {
+      res.send({
+        "status": 403,
+        "statusText": "forbidden",
+      });
+    } else {
+      res.send({
+        "status": 200,
+        "statusText": "ok",
+      });
+    }
   },
   
 };

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import IceContainer from '@icedesign/container';
-import { Tab } from '@icedesign/base';
+import { Tab, Feedback } from '@icedesign/base';
 import axios from 'axios';
 import CustomTable from './components/CustomTable';
 import EditDialog from './components/EditDialog';
@@ -73,7 +73,6 @@ export default class TabTable extends Component {
     axios
       .get('/api/v1/user/list')
       .then((response) => {
-        console.log(response.data.data);
         this.setState({
           dataSource: response.data.data,
         });
@@ -86,17 +85,35 @@ export default class TabTable extends Component {
   getFormValues = (dataIndex, values) => {
     const { dataSource, tabKey } = this.state;
     dataSource[tabKey][dataIndex] = values;
-    this.setState({
-      dataSource,
-    });
+    axios
+      .post('/api/v1/user/edit', {
+        id:     values.id,
+        name:   values.name,
+        auth:   values.auth,
+      })
+      .then((response) => {
+        this.setState({
+          dataSource,
+        });
+      });
   };
 
-  handleRemove = (value, index) => {
+  handleRemove = (value, index, values) => {
     const { dataSource, tabKey } = this.state;
-    dataSource[tabKey].splice(index, 1);
-    this.setState({
-      dataSource,
-    });
+    axios
+      .post('/api/v1/user/del', {
+        id: values.id,
+      })
+      .then((response) => {
+        if (response.data.status === 200) {
+          dataSource[tabKey].splice(index, 1);
+          this.setState({
+            dataSource,
+          });
+        } else {
+          Feedback.toast.error('无权限删除本用户');
+        }
+      });
   };
 
   handleTabChange = (key) => {
