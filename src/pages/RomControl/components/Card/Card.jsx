@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Grid, Icon } from '@icedesign/base';
+import { Grid, Icon, Feedback } from '@icedesign/base';
 import IceContainer from '@icedesign/container';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 
 const { Row, Col } = Grid;
 
@@ -24,26 +25,80 @@ export default class Card extends Component {
     super(props);
     this.state = {
       hanging: false,
-
+      acl: true,
     };
-
   };
 
+  componentDidMount() {
+    const { item } = this.props;
+    this.setState({
+      acl: item.acl,
+    });
+  }
+
   openNet = () => {
+    const { item } = this.props;
     this.setState({
       hanging: true,
     });
+    axios
+      .post('/api/v1/rom/' + item.code + '/open' )
+      .then((response) => {
+        if (response.data.status === 200) {
+          this.setState({
+            hanging: false,
+            acl: false,
+          });
+          Feedback.toast.success('切换网络状态成功');
+        } else {
+          this.setState({
+            hanging: false,
+          });
+          Feedback.toast.prompt('切换网络状态失败');
+        }
+      })
+      .catch((error) => {
+        this.setState({
+          hanging: false,
+        });
+        Feedback.toast.error('请求错误');
+        console.log(error);
+      });
   };
 
   closeNet = () => {
+    const { item } = this.props;
     this.setState({
       hanging: true,
     });
+    axios
+      .post('/api/v1/rom/' + item.code + '/close' )
+      .then((response) => {
+        if (response.data.status === 200) {
+          this.setState({
+            hanging: false,
+            acl: true,
+          });
+          Feedback.toast.success('切换网络状态成功');
+        } else {
+          this.setState({
+            hanging: false,
+          });
+          Feedback.toast.prompt('切换网络状态失败');
+        }
+      })
+      .catch((error) => {
+        this.setState({
+          hanging: false,
+        });
+        Feedback.toast.error('请求错误');
+        console.log(error);
+      });
   };
 
   render() {
     const { item } = this.props;
-    const { hanging } = this.state;
+    const { hanging, acl } = this.state;
 
     return (
       <Col l="6" m="6" s="8" xs="12" xxs="24" style={styles.col}>
@@ -51,14 +106,14 @@ export default class Card extends Component {
           <div style={styles.body}>
             <h5 style={styles.name}>{item.name}</h5>
             <p style={styles.desc}>{item.desc}</p>
-            <div style={item.acl ? styles.close : styles.open}>{item.acl ? 'CLOSE' : 'OPEN'}</div>
+            <div style={acl ? styles.close : styles.open}>{acl ? 'CLOSE' : 'OPEN'}</div>
           </div>
           <div style={styles.footer}>
             <a href={"#/rom/control/" + item.code} style={{ ...styles.link, ...styles.line }}>
               <Icon type="box" size="small" style={styles.icon} />{' '}
               机器控制
             </a>
-            {item.acl ? 
+            {acl ? 
               <span style={styles.link} onClick={hanging ? () => {} : this.openNet}>
                 {hanging ? [
                     (<Icon type="loading" size="small" style={styles.icon} key="0" />),
