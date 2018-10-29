@@ -131,8 +131,8 @@ module.exports = {
         { tab: '5楼', key: 2 },
         { tab: '6楼', key: 3 },
       ],
-      dataSource: {
-        0:[
+      dataSource: [
+        [
           {
             name: '教六603',
             code: 'dx603',
@@ -152,7 +152,7 @@ module.exports = {
             acl: !true,
           },
         ],
-        1:[
+        [
           {
             name: '教六603',
             code: 'dx603',
@@ -166,7 +166,7 @@ module.exports = {
             acl: true,
           },
         ],
-        2:[
+        [
           {
             name: '教六603',
             code: 'dx603',
@@ -174,7 +174,7 @@ module.exports = {
             acl: !true,
           },
         ],
-      },
+      ],
     },
   },
 
