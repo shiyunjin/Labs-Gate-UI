@@ -19,6 +19,7 @@ export default class ServiceCard extends Component {
 
   static defaultProps = {
     dataSource: [],
+    tabKey: 0,
   };
 
   constructor(props) {
@@ -30,15 +31,14 @@ export default class ServiceCard extends Component {
   };
 
   render() {
-    const mockData = this.props.dataSource;
-    console.info(mockData);
+    const { dataSource } = this.props;
 
     return (
       <Row wrap gutter="20">
-        {mockData.map((item, index) => (
+        {dataSource.map((item, index) => (
           <Card
+            key={index}  
             item={item}
-            index={index}
           />
         ))}
       </Row>

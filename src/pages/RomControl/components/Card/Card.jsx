@@ -13,12 +13,10 @@ export default class Card extends Component {
   static defaultProps = {};
 
   static propTypes = {
-    index: PropTypes.array,
-    item: PropTypes.array,
+    item: PropTypes.object,
   };
 
   static defaultProps = {
-    index: [],
     item: [],
   };
 
@@ -44,11 +42,11 @@ export default class Card extends Component {
   };
 
   render() {
-    const { index, item } = this.props;
+    const { item } = this.props;
     const { hanging } = this.state;
 
     return (
-      <Col l="6" m="6" s="8" xs="12" xxs="24" key={index} style={styles.col}>
+      <Col l="6" m="6" s="8" xs="12" xxs="24" style={styles.col}>
         <IceContainer style={styles.container}>
           <div style={styles.body}>
             <h5 style={styles.name}>{item.name}</h5>
@@ -63,10 +61,10 @@ export default class Card extends Component {
             {item.acl ? 
               <span style={styles.link} onClick={hanging ? () => {} : this.openNet}>
                 {hanging ? [
-                    (<Icon type="loading" size="small" style={styles.icon} />),
+                    (<Icon type="loading" size="small" style={styles.icon} key="0" />),
                     ('正在处理'),
                   ]:[
-                    (<Icon type="process" size="small" style={styles.icon} />),
+                    (<Icon type="process" size="small" style={styles.icon} key="1" />),
                     ('开启外网'),
                   ]
                 }
@@ -74,10 +72,10 @@ export default class Card extends Component {
             :
               <span style={styles.link} onClick={hanging ? () => {} : this.closeNet}>
                 {hanging ? [
-                    (<Icon type="loading" size="small" style={styles.icon} />),
+                    (<Icon type="loading" size="small" style={styles.icon} key="0" />),
                     ('正在处理'),
                   ]:[
-                    (<Icon type="process" size="small" style={styles.icon} />),
+                    (<Icon type="process" size="small" style={styles.icon} key="1" />),
                     ('关闭外网'),
                   ]
                 }
