@@ -27,7 +27,6 @@ export default class BasicTab extends Component {
         this.setState({
           dataSource: response.data.data.dataSource,
           tabs: response.data.data.tabs,
-          tabKey: 0,
         });
       })
       .catch((error) => {
@@ -47,7 +46,7 @@ export default class BasicTab extends Component {
     return (
       <div className="basic-tab">
         <IceContainer style={styles.tabCardStyle}>
-          <Tab contentStyle={{ display: 'none' }} onChange={this.handleTabChange}>
+          <Tab contentStyle={{ display: 'none' }} onChange={this.handleTabChange} defaultActiveKey="0">
             {tabs.map((item) => 
               <Tab.TabPane key={item.key} tab={item.tab} />
             )}
