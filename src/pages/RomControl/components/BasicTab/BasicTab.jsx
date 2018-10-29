@@ -46,19 +46,27 @@ export default class BasicTab extends Component {
     return (
       <div className="basic-tab">
         <IceContainer style={styles.tabCardStyle}>
-          <Tab contentStyle={{ display: 'none' }} onChange={this.handleTabChange} defaultActiveKey="0">
+          <Tab contentStyle={HIDDEN} onChange={this.handleTabChange} defaultActiveKey="0" lazyLoad={false}>
             {tabs.map((item) => 
               <Tab.TabPane key={item.key} tab={item.tab} />
             )}
           </Tab>
         </IceContainer>
-        <ServiceCard
-          dataSource={dataSource[this.state.tabKey]}
-        />
+        {tabs.map((item) => 
+          <div key={item.key} style={{display:this.state.tabKey == item.key ? '' : 'none'}}>
+            <ServiceCard
+              dataSource={dataSource[item.key]}
+            />
+          </div>
+        )}
       </div>
     );
   }
 }
+
+const HIDDEN = {
+  display: 'none',
+};
 
 const styles = {
   tabCardStyle: {
