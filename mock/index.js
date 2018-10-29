@@ -177,5 +177,59 @@ module.exports = {
       },
     },
   },
+
+  'POST /api/v1/rom/dx603/open': (req, res) => {
+    setTimeout(function () {
+      res.send({
+        "status": 200,
+        "statusText": "ok",
+      });
+    }, 5000);
+  },
+
+  'POST /api/v1/rom/dx603/close': (req, res) => {
+    setTimeout(function () {
+      res.send({
+        "status": 200,
+        "statusText": "ok",
+      });
+    }, 5000);
+  },
+
+  'POST /api/v1/rom/dx601/open': (req, res) => {
+    setTimeout(function () {
+      res.send({
+        "status": 200,
+        "statusText": "ok",
+      });
+    }, 5000);
+  },
+
+  'POST /api/v1/rom/dx601/close': (req, res) => {
+    setTimeout(function () {
+      res.send({
+        "status": 200,
+        "statusText": "ok",
+      });
+    }, 5000);
+  },
+
+  'POST /api/v1/rom/dx602/open': (req, res) => {
+    setTimeout(function () {
+      res.send({
+        "status": 200,
+        "statusText": "ok",
+      });
+    }, 5000);
+  },
+
+  'POST /api/v1/rom/dx602/close': (req, res) => {
+    setTimeout(function () {
+      res.send({
+        "status": 500,
+        "statusText": "system error",
+      });
+    }, 5000);
+  },
   
 };
