@@ -35,17 +35,18 @@ import Security from './pages/Security';
 
 import User from './pages/User';
 
+import RomControlMachine from './pages/RomControlMachine';
 import NotFound from './pages/NotFound';
 
 var routerConfig = [
   {
-    path: '/table/table-display',
-    component: TableDisplay,
+    path: '/exception/204',
+    component: Empty,
     layout: BasicLayout,
   },
   {
-    path: '/exception/403',
-    component: Forbidden,
+    path: '/table/table-display',
+    component: TableDisplay,
     layout: BasicLayout,
   },
   {
@@ -94,8 +95,8 @@ var routerConfig = [
     layout: BasicLayout,
   },
   {
-    path: '/exception/204',
-    component: Empty,
+    path: '/exception/403',
+    component: Forbidden,
     layout: BasicLayout,
   },
   {
@@ -106,7 +107,7 @@ var routerConfig = [
   {
     path: '/rom/control/:code',
     layout: BasicLayout,
-    component: RomControl,
+    component: RomControlMachine,
   },
   {
     path: '/rom/control',
