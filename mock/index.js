@@ -231,5 +231,30 @@ module.exports = {
       });
     }, 5000);
   },
+
+  'GET /api/v1/rom/dx602/machine': {
+    "status": 200,
+    "statusText": "ok",
+    "data": [
+      {
+        "ip":     "192.168.1.1",
+        "mac":    "54:D5:1F:9F:E6:F9",
+        "des":    "",
+        "status": "OPEN",
+      },
+      {
+        "ip": "192.168.1.2",
+        "mac": "54:D5:1F:9F:E6:F9",
+        "des": "",
+        "status": "CLOSE",
+      },
+      {
+        "ip": "192.168.1.3",
+        "mac": "54:D5:1F:9F:E6:F9",
+        "des": "",
+        "status": "PROCESS",
+      },
+    ],
+  },
   
 };
