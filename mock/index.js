@@ -232,7 +232,7 @@ module.exports = {
     }, 5000);
   },
 
-  'GET /api/v1/rom/dx602/machine': {
+  'GET /api/v1/rom/:code/machine': {
     "status": 200,
     "statusText": "ok",
     "data": [
@@ -252,9 +252,27 @@ module.exports = {
         "ip": "192.168.1.3",
         "mac": "54:D5:1F:9F:E6:F9",
         "des": "",
-        "status": "PROCESS",
+        "status": "CLOSE",
       },
     ],
+  },
+
+  'POST /api/v1/rom/:code/machine/:ip/open': (req, res) => {
+    setTimeout(function () {
+      res.send({
+        "status": 200,
+        "statusText": "ok",
+      });
+    }, 5000);
+  },
+
+  'POST /api/v1/rom/:code/machine/:ip/close': (req, res) => {
+    setTimeout(function () {
+      res.send({
+        "status": 200,
+        "statusText": "ok",
+      });
+    }, 5000);
   },
   
 };
