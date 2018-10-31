@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import UserTable from './components/UserTable';
 
-export default class RomMachine extends Component {
-  static displayName = 'RomMachine';
+export default class RomManage extends Component {
+  static displayName = 'RomManage';
 
   constructor(props) {
     super(props);
@@ -11,7 +11,7 @@ export default class RomMachine extends Component {
 
   render() {
     return (
-      <div className="rom-machine-page">
+      <div className="rom-manage-page">
         <UserTable />
       </div>
     );

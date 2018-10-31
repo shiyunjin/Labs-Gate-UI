@@ -37,8 +37,8 @@ const asideMenuConfig = [
         path: '/rom/control',
       },
       {
-        name: '机器管理',
-        path: '/rom/machine',
+        name: '实验室管理',
+        path: '/rom/manage',
       },
     ],
   },

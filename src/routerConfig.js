@@ -25,7 +25,7 @@ import TableDisplay from './pages/TableDisplay';
 
 import RomControl from './pages/RomControl';
 
-import RomMachine from './pages/RomMachine';
+import RomManage from './pages/RomManage';
 
 import Status from './pages/Status';
 
@@ -115,9 +115,9 @@ var routerConfig = [
     component: RomControl,
   },
   {
-    path: '/rom/machine',
+    path: '/rom/manage',
     layout: BasicLayout,
-    component: RomMachine,
+    component: RomManage,
   },
   {
     path: '/status',
