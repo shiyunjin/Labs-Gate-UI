@@ -22,7 +22,7 @@ export default class BasicTab extends Component {
 
   componentDidMount() {
     axios
-      .get('/api/v1/rom/list')
+      .get('/api/v1/roms')
       .then((response) => {
         this.setState({
           dataSource: response.data.data.dataSource,

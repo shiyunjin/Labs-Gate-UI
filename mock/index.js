@@ -121,7 +121,7 @@ module.exports = {
     "statusText": "ok",
   },
 
-  'GET /api/v1/rom/list': {
+  'GET /api/v1/roms': {
     "status": 200,
     "statusText": "ok",
     "data": {
