@@ -1,101 +1,7 @@
 import React, { Component } from 'react';
 import IceContainer from '@icedesign/container';
-import { Table, Button } from '@icedesign/base';
+import { Table, Button, Icon } from '@icedesign/base';
 import axios from 'axios';
-
-const mockDataSource = [
-  {
-    invite: {
-      name: '李经理',
-      avatar: require('./images/TB1j159r21TBuNjy0FjXXajyXXa-499-498.png_80x80.jpg'),
-    },
-    email: 'hi@example.com',
-    sent: {
-      name: '王总',
-      avatar: require('./images/TB1Daimr1SSBuNjy0FlXXbBpVXa-499-498.png_80x80.jpg'),
-    },
-    date: '2018年3月12日',
-    status: '已发送',
-  },
-  {
-    invite: {
-      name: '王经理',
-      avatar: require('./images/TB1j159r21TBuNjy0FjXXajyXXa-499-498.png_80x80.jpg'),
-    },
-    email: 'hi@example.com',
-    sent: {
-      name: '张总',
-      avatar: require('./images/TB1FGimr1SSBuNjy0FlXXbBpVXa-499-498.png_80x80.jpg'),
-    },
-    date: '2018年3月11日',
-    status: '等待接受',
-  },
-  {
-    invite: {
-      name: '张经理',
-      avatar: require('./images/TB1AdOerVOWBuNjy0FiXXXFxVXa-499-498.png_80x80.jpg'),
-    },
-    email: 'hi@example.com',
-    sent: {
-      name: '于总',
-      avatar: require('./images/TB1Daimr1SSBuNjy0FlXXbBpVXa-499-498.png_80x80.jpg'),
-    },
-    date: '2018年3月10日',
-    status: '已完成',
-  },
-  {
-    invite: {
-      name: '于经理',
-      avatar: require('./images/TB1Daimr1SSBuNjy0FlXXbBpVXa-499-498.png_80x80.jpg'),
-    },
-    email: 'hi@example.com',
-    sent: {
-      name: '马总',
-      avatar: require('./images/TB1AdOerVOWBuNjy0FiXXXFxVXa-499-498.png_80x80.jpg'),
-    },
-    date: '2018年3月9日',
-    status: '已发送',
-  },
-  {
-    invite: {
-      name: '马经理',
-      avatar: require('./images/TB1FGimr1SSBuNjy0FlXXbBpVXa-499-498.png_80x80.jpg'),
-    },
-    email: 'hi@example.com',
-    sent: {
-      name: '刘总',
-      avatar: require('./images/TB1FWimr1SSBuNjy0FlXXbBpVXa-499-498.png_80x80.jpg'),
-    },
-    date: '2018年3月8日',
-    status: '已发送',
-  },
-  {
-    invite: {
-      name: '刘经理',
-      avatar: require('./images/TB1Daimr1SSBuNjy0FlXXbBpVXa-499-498.png_80x80.jpg'),
-    },
-    email: 'hi@example.com',
-    sent: {
-      name: '陈总',
-      avatar: require('./images/TB1FGimr1SSBuNjy0FlXXbBpVXa-499-498.png_80x80.jpg'),
-    },
-    date: '2018年3月6日',
-    status: '已发送',
-  },
-  {
-    invite: {
-      name: '陈经理',
-      avatar: require('./images/TB1FWimr1SSBuNjy0FlXXbBpVXa-499-498.png_80x80.jpg'),
-    },
-    email: 'hi@example.com',
-    sent: {
-      name: '许总',
-      avatar: require('./images/TB1AdOerVOWBuNjy0FiXXXFxVXa-499-498.png_80x80.jpg'),
-    },
-    date: '2018年3月3日',
-    status: '已完成',
-  },
-];
 
 const statusColors = {
   PROCESS: '#fdcb6e',
@@ -114,7 +20,8 @@ export default class ReviewRequestTable extends Component {
     super(props);
     this.state = {
       dataSource: [],
-      loading: false,
+      loading: {},
+      newStatus: {},
     };
   };
   
@@ -136,26 +43,82 @@ export default class ReviewRequestTable extends Component {
     return (
       <div style={styles.sentInfo}>
         <Button
-          type="primary"
-
-          loading={this.state.loading}
-          onClick={this.enterLoading.bind(this)}
-        >开启网络</Button>
+          type={this.state.loading[record.ip] ? "secondary" : "primary"}
+          loading={this.state.loading[record.ip]}
+          onClick={(this.state.newStatus[record.ip] ? this.state.newStatus[record.ip] : record.status) == 'CLOSE' ? this.openNet.bind(this, record) : this.closeNet.bind(this, record)}
+        >{this.state.loading[record.ip] ? '执行中' : (record.status == 'CLOSE' ? '开启网络' : '关闭网络')}</Button>
       </div>
     );
   };
 
-  enterLoading() {
-    this.setState({ loading: true });
+  openNet(record) {
+    const { code } = this.props;
+    this.setState({
+      loading:{
+        ...this.state.loading,
+        [record.ip]: true,
+      },
+      newStatus:{
+        ...this.state.newStatus,
+        [record.ip]: 'PROCESS',
+      }
+    });
+    axios
+      .post('/api/v1/rom/' + code + '/machine/' + record.ip + '/open')
+      .then((response) => {
+        this.setState({
+          loading:{
+            ...this.state.loading,
+            [record.ip]: false,
+          },
+          newStatus:{
+            ...this.state.newStatus,
+            [record.ip]: 'OPEN',
+          }
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
-  renderStatus = (value) => {
-    return <span style={{ color: statusColors[value] }}>{value}</span>;
+  closeNet(record) {
+    const { code } = this.props;
+    this.setState({
+      loading:{
+        ...this.state.loading,
+        [record.ip]: true,
+      },
+      newStatus:{
+        ...this.state.newStatus,
+        [record.ip]: 'PROCESS',
+      }
+    });
+    axios
+      .post('/api/v1/rom/' + code + '/machine/' + record.ip + '/close')
+      .then((response) => {
+        this.setState({
+          loading:{
+            ...this.state.loading,
+            [record.ip]: false,
+          },
+          newStatus:{
+            ...this.state.newStatus,
+            [record.ip]: 'CLOSE',
+          }
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  renderStatus = (value, index, record) => {
+    return <span style={{ color: statusColors[this.state.newStatus[record.ip] ? this.state.newStatus[record.ip] : value] }}>{this.state.newStatus[record.ip] ? this.state.newStatus[record.ip] : value}</span>;
   };
 
   render() {
     const { dataSource } = this.state;
-    console.info(dataSource);
     
     return (
       <IceContainer title="当前教室：教六603">
