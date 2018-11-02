@@ -11,30 +11,18 @@ import HomeLayout from './layouts/HomeLayout';
 import UserLayout from './layouts/UserLayout';
 import UserLogin from './pages/UserLogin';
 import Dashboard from './pages/Dashboard';
-import Charts from './pages/Charts';
-import Portlets from './pages/Portlets';
 import Result from './pages/Result';
 import Fail from './pages/Fail';
 import ServerError from './pages/ServerError';
 import Forbidden from './pages/Forbidden';
 import Empty from './pages/Empty';
-import List from './pages/List';
-import CardList from './pages/CardList';
-import BasicTable from './pages/BasicTable';
-import TableDisplay from './pages/TableDisplay';
 
 import RomControl from './pages/RomControl';
-
 import RomManage from './pages/RomManage';
-
 import Status from './pages/Status';
-
 import Device from './pages/Device';
-
 import Security from './pages/Security';
-
 import User from './pages/User';
-
 import RomControlMachine from './pages/RomControlMachine';
 import NotFound from './pages/NotFound';
 
@@ -45,38 +33,8 @@ var routerConfig = [
     layout: BasicLayout,
   },
   {
-    path: '/table/table-display',
-    component: TableDisplay,
-    layout: BasicLayout,
-  },
-  {
-    path: '/chart/chart-list',
-    component: Charts,
-    layout: BasicLayout,
-  },
-  {
-    path: '/list/article-list',
-    component: List,
-    layout: BasicLayout,
-  },
-  {
-    path: '/list/card-list',
-    component: CardList,
-    layout: BasicLayout,
-  },
-  {
     path: '/result/success',
     component: Result,
-    layout: BasicLayout,
-  },
-  {
-    path: '/table/basic-table',
-    component: BasicTable,
-    layout: BasicLayout,
-  },
-  {
-    path: '/portlets/base',
-    component: Portlets,
     layout: BasicLayout,
   },
   {

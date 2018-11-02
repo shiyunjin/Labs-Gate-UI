@@ -66,10 +66,6 @@ const asideMenuConfig = [
     icon: 'key',
     authority: ['user', 'admin'],
   },
-  {
-    name: '基础详情页',
-    path: '/portlets/base',
-  },
 ];
 
 export { headerMenuConfig, asideMenuConfig };
