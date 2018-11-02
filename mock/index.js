@@ -274,5 +274,12 @@ module.exports = {
       });
     }, 5000);
   },
+
+  'POST /api/v1/rom/:code/machine/:ip/delete': (req, res) => {
+    res.send({
+      "status": 200,
+      "statusText": "ok",
+    });
+  },
   
 };

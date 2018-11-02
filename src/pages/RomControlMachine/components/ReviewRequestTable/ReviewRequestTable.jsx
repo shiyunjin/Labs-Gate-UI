@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import IceContainer from '@icedesign/container';
-import { Table, Button, Icon } from '@icedesign/base';
+import { Table, Button } from '@icedesign/base';
+import DeleteBalloon from './components/DeleteBalloon';
 import axios from 'axios';
 
 const statusColors = {
@@ -113,8 +114,38 @@ export default class ReviewRequestTable extends Component {
       });
   };
 
+  delMachine(value, id, record) {
+    const { code } = this.props;
+    axios
+      .post('/api/v1/rom/' + code + '/machine/' + record.ip + '/delete')
+      .then((response) => {
+        const { dataSource } = this.state;
+        let index = -1;
+        dataSource.forEach((item, i) => {
+          if (item.ip === record.ip) {
+            index = i;
+          }
+        });
+        if (index !== -1) {
+          dataSource.splice(index, 1);
+          this.setState({
+            dataSource
+          });
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   renderStatus = (value, index, record) => {
     return <span style={{ color: statusColors[this.state.newStatus[record.ip] ? this.state.newStatus[record.ip] : value] }}>{this.state.newStatus[record.ip] ? this.state.newStatus[record.ip] : value}</span>;
+  };
+
+  renderDel = (value, index, record) => {
+    return  <DeleteBalloon
+              handleRemove={this.delMachine.bind(this, value, index, record)}
+            />;
   };
 
   render() {
@@ -123,6 +154,7 @@ export default class ReviewRequestTable extends Component {
     return (
       <IceContainer title="当前教室：教六603">
         <Table dataSource={dataSource} hasBorder={false}>
+          <Table.Column title="删除" cell={this.renderDel} />
           <Table.Column title="IP 地址" dataIndex="ip" />
           <Table.Column title="MAC地址" dataIndex="mac" />
           <Table.Column title="备注" dataIndex="des" />
