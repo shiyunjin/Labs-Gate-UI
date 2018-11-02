@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import IceContainer from '@icedesign/container';
-import { Table, Button } from '@icedesign/base';
+import { Table, Button, Feedback } from '@icedesign/base';
 import DeleteBalloon from './components/DeleteBalloon';
 import axios from 'axios';
 
@@ -67,16 +67,31 @@ export default class ReviewRequestTable extends Component {
     axios
       .post('/api/v1/rom/' + code + '/machine/' + record.ip + '/open')
       .then((response) => {
-        this.setState({
-          loading:{
-            ...this.state.loading,
-            [record.ip]: false,
-          },
-          newStatus:{
-            ...this.state.newStatus,
-            [record.ip]: 'OPEN',
-          }
-        });
+        if (response.data.status === 200) {
+          this.setState({
+            loading:{
+              ...this.state.loading,
+              [record.ip]: false,
+            },
+            newStatus:{
+              ...this.state.newStatus,
+              [record.ip]: 'OPEN',
+            }
+          });
+          Feedback.toast.success('切换网络状态成功');
+        } else {
+          this.setState({
+            loading:{
+              ...this.state.loading,
+              [record.ip]: false,
+            },
+            newStatus:{
+              ...this.state.newStatus,
+              [record.ip]: 'CLOSE',
+            }
+          });
+          Feedback.toast.prompt('切换网络状态失败');
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -98,16 +113,31 @@ export default class ReviewRequestTable extends Component {
     axios
       .post('/api/v1/rom/' + code + '/machine/' + record.ip + '/close')
       .then((response) => {
-        this.setState({
-          loading:{
-            ...this.state.loading,
-            [record.ip]: false,
-          },
-          newStatus:{
-            ...this.state.newStatus,
-            [record.ip]: 'CLOSE',
-          }
-        });
+        if (response.data.status === 200) {
+          this.setState({
+            loading:{
+              ...this.state.loading,
+              [record.ip]: false,
+            },
+            newStatus:{
+              ...this.state.newStatus,
+              [record.ip]: 'CLOSE',
+            }
+          });
+          Feedback.toast.success('切换网络状态成功');
+        } else {
+          this.setState({
+            loading:{
+              ...this.state.loading,
+              [record.ip]: false,
+            },
+            newStatus:{
+              ...this.state.newStatus,
+              [record.ip]: 'OPEN',
+            }
+          });
+          Feedback.toast.prompt('切换网络状态失败');
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -119,18 +149,23 @@ export default class ReviewRequestTable extends Component {
     axios
       .post('/api/v1/rom/' + code + '/machine/' + record.ip + '/delete')
       .then((response) => {
-        const { dataSource } = this.state;
-        let index = -1;
-        dataSource.forEach((item, i) => {
-          if (item.ip === record.ip) {
-            index = i;
-          }
-        });
-        if (index !== -1) {
-          dataSource.splice(index, 1);
-          this.setState({
-            dataSource
+        if (response.data.status === 200) {
+          const { dataSource } = this.state;
+          let index = -1;
+          dataSource.forEach((item, i) => {
+            if (item.ip === record.ip) {
+              index = i;
+            }
           });
+          if (index !== -1) {
+            dataSource.splice(index, 1);
+            this.setState({
+              dataSource
+            });
+          }
+          Feedback.toast.success('删除机器成功');
+        } else {
+          Feedback.toast.prompt('删除机器失败');
         }
       })
       .catch((error) => {
