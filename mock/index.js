@@ -282,4 +282,76 @@ module.exports = {
     });
   },
   
+  'GET /api/v1/floor': {
+    "status": 200,
+    "statusText": "ok",
+    "data": {
+      "333":"3楼",
+      "444":"4楼",
+    },
+  },
+
+  'POST /api/v1/floor/add': {
+    "status": 200,
+    "statusText": "ok",
+    "data":"666",
+  },
+
+  'POST /api/v1/floor/edit': {
+    "status": 200,
+    "statusText": "ok",
+  },
+
+  'POST /api/v1/floor/del': {
+    "status": 200,
+    "statusText": "ok",
+  },
+
+  'GET /api/v1/lab': {
+    "status": 200,
+    "statusText": "ok",
+    "data": [
+      {
+        floor: '333',
+        name: `教六403`,
+        code: 'dx403',
+        device: '计算机',
+        machine: '1台',
+        admin: '时尚',
+      },
+      {
+        floor: '444',
+        name: `教六403`,
+        code: 'dx403',
+        device: '计算机',
+        machine: '1台',
+        admin: '时尚',
+      },
+      {
+        floor: '333',
+        name: `教六403`,
+        code: 'dx403',
+        device: '计算机',
+        machine: '1台',
+        admin: '时尚',
+      },
+      {
+        floor: '444',
+        name: `教六403`,
+        code: 'dx403',
+        device: '计算机',
+        machine: '1台',
+        admin: '时尚',
+      },
+      {
+        floor: '333',
+        name: `教六403`,
+        code: 'dx403',
+        device: '计算机',
+        machine: '1台',
+        admin: '时尚',
+      },
+    ],
+  },
+  
 };

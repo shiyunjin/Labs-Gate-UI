@@ -2,6 +2,10 @@
 import React, { Component } from 'react';
 import { Table, Switch, Icon, Button, Grid, Pagination } from '@icedesign/base';
 import IceContainer from '@icedesign/container';
+import AddDialog from './components/AddDialog';
+import ListDialog from './components/ListDialog';
+import AddFloorDialog from './components/AddFloorDialog';
+import axios from 'axios';
 
 const { Row, Col } = Grid;
 
@@ -17,34 +21,39 @@ export default class CustomTable extends Component {
     this.state = {
       formValue: {},
       current: 1,
+      labSource: [],
+      floorSource: {},
     };
-  }
+  };
+
+  componentDidMount() {
+    axios
+      .get('/api/v1/floor')
+      .then((response) => {
+        this.setState({
+          floorSource: response.data.data,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    axios
+      .get('/api/v1/lab')
+      .then((response) => {
+        this.setState({
+          labSource: response.data.data,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   formChange = (value) => {
     console.log('changed value', value);
     this.setState({
       formValue: value,
     });
-  };
-
-  getData = () => {
-    const result = [];
-    for (let i = 0; i < 10; i++) {
-      result.push({
-        id: i + 1,
-        name: `李晓红${i + 1}`,
-        university: '浙江大学',
-        college: '计算机',
-        class: i + 1,
-        phone: `1876666123${i}`,
-        role: '管理员',
-      });
-    }
-    return result;
-  };
-
-  onChange = (...args) => {
-    console.log(...args);
   };
 
   handlePaginationChange = (current) => {
@@ -70,46 +79,48 @@ export default class CustomTable extends Component {
     );
   };
 
+  addFloorAction = (value, id) => {
+    this.setState({
+      floorSource: {
+        ...this.state.floorSource,
+        [id]: value.name,
+      },
+    });
+  };
+
+  floorRender = (value, index, render) => {
+    const { floorSource } = this.state;
+
+    return <span>{floorSource[value]}</span>;
+  };
+
   render() {
     return (
-      <IceContainer title="用户列表">
+      <IceContainer title="实验室管理">
         <Row wrap style={styles.headRow}>
           <Col l="12">
-            <Button type="primary" style={styles.button}>
-              <Icon type="add" size="xs" style={{ marginRight: '4px' }} />添加用户
-            </Button>
+            <AddDialog />
           </Col>
           <Col l="12" style={styles.center}>
-            <Button type="normal" style={styles.button}>
-              删除
-            </Button>
-            <Button type="normal" style={{ ...styles.button, marginLeft: 10 }}>
-              导入
-            </Button>
-            <Button type="normal" style={{ ...styles.button, marginLeft: 10 }}>
-              下载
-            </Button>
+            <AddFloorDialog
+              addFloorAction={this.addFloorAction}
+            />
+            <ListDialog
+              floorSource={this.state.floorSource}
+            />
           </Col>
         </Row>
         <Table
-          dataSource={this.getData()}
-          rowSelection={{ onChange: this.onChange }}
+          dataSource={this.state.labSource}
         >
-          <Table.Column title="序号" dataIndex="id" width={100} />
-          <Table.Column title="姓名" dataIndex="name" width={100} />
-          <Table.Column title="学校" dataIndex="university" width={200} />
-          <Table.Column title="院校" dataIndex="college" width={200} />
-          <Table.Column title="班级" dataIndex="class" width={100} />
-          <Table.Column title="联系电话" dataIndex="phone" width={200} />
-          <Table.Column title="角色" dataIndex="role" width={200} />
-          <Table.Column title="启动/停用" width={100} cell={() => <Switch />} />
+          <Table.Column title="楼层" dataIndex="floor" width={100} cell={this.floorRender} />
+          <Table.Column title="名称" dataIndex="name" width={150} />
+          <Table.Column title="代码" dataIndex="code" width={100} />
+          <Table.Column title="设备" dataIndex="device" width={100} />
+          <Table.Column title="机器数" dataIndex="machine" width={100} />
+          <Table.Column title="管理员" dataIndex="admin" width={150} />
           <Table.Column title="操作" width={100} cell={this.renderOper} />
         </Table>
-        <Pagination
-          style={styles.pagination}
-          current={this.state.current}
-          onChange={this.handlePaginationChange}
-        />
       </IceContainer>
     );
   }
