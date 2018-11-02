@@ -33,7 +33,7 @@ export default class DeleteBalloon extends Component {
 
   render() {
     const visibleTrigger = (
-      <Button size="small" type="secondary" shape="warning">
+      <Button type="secondary" shape="warning">
         <Icon type="ashbin" />
       </Button>
     );
