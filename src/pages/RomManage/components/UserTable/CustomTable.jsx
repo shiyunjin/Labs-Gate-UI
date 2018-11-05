@@ -94,6 +94,12 @@ export default class CustomTable extends Component {
     return <span>{floorSource[value]}</span>;
   };
 
+  setFloorAction = (floorSource) => {
+    this.setState({
+      floorSource: floorSource,
+    });
+  };
+
   render() {
     return (
       <IceContainer title="实验室管理">
@@ -107,6 +113,7 @@ export default class CustomTable extends Component {
             />
             <ListDialog
               floorSource={this.state.floorSource}
+              setFloorAction={this.state.setFloorAction}
             />
           </Col>
         </Row>
