@@ -69,7 +69,8 @@ export default class CustomTable extends Component {
 
     axios
       .post("/api/v1/lab/del", {
-        id: render.code,
+        floor: render.floor,
+        code: render.code,
       })
       .then((response) => {
         this.setState({
@@ -99,6 +100,7 @@ export default class CustomTable extends Component {
     labSource[dataIndex] = values;
     axios
       .post('/api/v1/lab/edit', {
+        floor: values.floor,
         name: values.name,
         code: values.code,
         vlan: values.vlan,
