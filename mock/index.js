@@ -353,5 +353,18 @@ module.exports = {
       },
     ],
   },
+
+  'POST /api/v1/lab/add': {
+    "status": 200,
+    "statusText": "ok",
+    "data": {
+      floor: '333',
+      name: `教六403`,
+      code: 'dx403',
+      device: '计算机',
+      machine: '1台',
+      admin: '时尚',
+    },
+  },
   
 };

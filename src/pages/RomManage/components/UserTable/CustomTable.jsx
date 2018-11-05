@@ -100,12 +100,36 @@ export default class CustomTable extends Component {
     });
   };
 
+  addLabAction = (values) => {
+    axios
+      .post("/api/v1/lab/add", {
+        floor: values.floor,
+        name: values.name,
+        code: values.code,
+        device: values.device,
+        admin: values.admin,
+      })
+      .then((response) => {
+        this.setState({
+          labSource: [
+            ...this.state.labSource,
+            {
+              ...response.data.data,
+            },
+          ],
+        });
+      });
+  };
+
   render() {
     return (
       <IceContainer title="实验室管理">
         <Row wrap style={styles.headRow}>
           <Col l="12">
-            <AddDialog />
+            <AddDialog
+              floorSource={this.state.floorSource}
+              addLabAction={this.addLabAction}
+            />
           </Col>
           <Col l="12" style={styles.center}>
             <AddFloorDialog

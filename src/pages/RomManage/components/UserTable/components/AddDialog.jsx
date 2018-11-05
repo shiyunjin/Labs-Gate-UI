@@ -7,7 +7,10 @@ const FormItem = Form.Item;
 export default class AddDialog extends Component {
   static displayName = 'AddDialog';
 
-  static defaultProps = {};
+  static defaultProps = {
+    floorSource: {},
+    addLabAction: () => {},
+  };
 
   constructor(props) {
     super(props);
@@ -23,18 +26,10 @@ export default class AddDialog extends Component {
         console.log('Errors in form!!!');
         return;
       }
-      axios
-        .post("/api/v1/user/add", {
-          username:   values.username,
-          name:       values.name,
-          auth:       values.auth,
-        })
-        .then((response) => {
-          this.setState({
-            visible: false,
-          });
-          this.props.addUserAction(values);
-        });
+      this.setState({
+        visible: false,
+      });
+      this.props.addLabAction(values);
     });
   };
 
@@ -50,9 +45,20 @@ export default class AddDialog extends Component {
     });
   };
 
+  floorData = () => {
+    const { floorSource } = this.props;
+    let list = [];
+    Object.keys(floorSource).forEach(key => {
+      list.push({
+        value: key,
+        label: floorSource[key],
+      });
+    });
+    return list;
+  };
+
   render() {
     const init = this.field.init;
-    const { resetButton, resetInput, disableReset, resetInputText } = this.state;
     const formItemLayout = {
       labelCol: {
         fixedSpan: 6,
@@ -82,10 +88,8 @@ export default class AddDialog extends Component {
                 {...init('floor', {
                   rules: [{ required: true, message: '必填选项' }],
                 })}
-              >
-                <Option value="333">3楼</Option>
-                <Option value="444">4楼</Option>
-              </Select>
+                dataSource={this.floorData()}
+              ></Select>
             </FormItem>
             <FormItem label="名称：" {...formItemLayout}>
               <Input
