@@ -6,6 +6,7 @@ import AddDialog from './components/AddDialog';
 import ListDialog from './components/ListDialog';
 import AddFloorDialog from './components/AddFloorDialog';
 import DeleteBalloon from './components/DeleteBalloon';
+import EditDialog from './components/EditDialog';
 import axios from 'axios';
 
 const { Row, Col } = Grid;
@@ -80,16 +81,36 @@ export default class CustomTable extends Component {
   renderOper = (value, index, render) => {
     return (
       <div style={styles.oper}>
-        <Icon
-          type="edit"
-          size="small"
-          style={{ ...styles.icon, ...styles.editIcon }}
+        <EditDialog
+          index={index}
+          record={render}
+          getFormValues={this.getFormValues}
+          floorSource={this.state.floorSource}
         />
         <DeleteBalloon
           handleRemove={() => this.deleteOn(render)}
         />
       </div>
     );
+  };
+
+  getFormValues = (dataIndex, values) => {
+    const { labSource } = this.state;
+    labSource[dataIndex] = values;
+    axios
+      .post('/api/v1/lab/edit', {
+        floor: values.floor,
+        name: values.name,
+        code: values.code,
+        vlan: values.vlan,
+        device: values.device,
+        admin: values.admin,
+      })
+      .then((response) => {
+        this.setState({
+          labSource,
+        });
+      });
   };
 
   addFloorAction = (value, id) => {
