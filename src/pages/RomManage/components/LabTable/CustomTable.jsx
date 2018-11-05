@@ -5,6 +5,7 @@ import IceContainer from '@icedesign/container';
 import AddDialog from './components/AddDialog';
 import ListDialog from './components/ListDialog';
 import AddFloorDialog from './components/AddFloorDialog';
+import DeleteBalloon from './components/DeleteBalloon';
 import axios from 'axios';
 
 const { Row, Col } = Grid;
@@ -62,7 +63,21 @@ export default class CustomTable extends Component {
     });
   };
 
-  renderOper = () => {
+  deleteOn = (render) => {
+    const data = this.state.labSource;
+
+    axios
+      .post("/api/v1/lab/del", {
+        id: render.code,
+      })
+      .then((response) => {
+        this.setState({
+          labSource: data.filter(i => i.code !== render.code),
+        });
+      });
+  };
+
+  renderOper = (value, index, render) => {
     return (
       <div style={styles.oper}>
         <Icon
@@ -70,10 +85,8 @@ export default class CustomTable extends Component {
           size="small"
           style={{ ...styles.icon, ...styles.editIcon }}
         />
-        <Icon
-          type="ashbin"
-          size="small"
-          style={{ ...styles.icon, ...styles.deleteIcon }}
+        <DeleteBalloon
+          handleRemove={() => this.deleteOn(render)}
         />
       </div>
     );

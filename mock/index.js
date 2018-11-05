@@ -322,7 +322,7 @@ module.exports = {
       {
         floor: '444',
         name: `教六403`,
-        code: 'dx403',
+        code: 'dx407',
         device: '计算机',
         machine: '1台',
         admin: '时尚',
@@ -330,7 +330,7 @@ module.exports = {
       {
         floor: '333',
         name: `教六403`,
-        code: 'dx403',
+        code: 'dx406',
         device: '计算机',
         machine: '1台',
         admin: '时尚',
@@ -338,7 +338,7 @@ module.exports = {
       {
         floor: '444',
         name: `教六403`,
-        code: 'dx403',
+        code: 'dx405',
         device: '计算机',
         machine: '1台',
         admin: '时尚',
@@ -346,7 +346,7 @@ module.exports = {
       {
         floor: '333',
         name: `教六403`,
-        code: 'dx403',
+        code: 'dx404',
         device: '计算机',
         machine: '1台',
         admin: '时尚',
@@ -359,12 +359,17 @@ module.exports = {
     "statusText": "ok",
     "data": {
       floor: '333',
-      name: `教六403`,
+      name: `教六409`,
       code: 'dx403',
       device: '计算机',
       machine: '1台',
       admin: '时尚',
     },
+  },
+
+  'POST /api/v1/lab/del': {
+    "status": 200,
+    "statusText": "ok",
   },
   
 };

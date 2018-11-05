@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import CustomTable from './CustomTable';
 
-export default class UserTable extends Component {
-  static displayName = 'UserTable';
+export default class LabTable extends Component {
+  static displayName = 'LabTable';
 
   static propTypes = {};
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import UserTable from './components/UserTable';
+import LabTable from './components/LabTable';
 
 export default class RomManage extends Component {
   static displayName = 'RomManage';
@@ -12,7 +12,7 @@ export default class RomManage extends Component {
   render() {
     return (
       <div className="rom-manage-page">
-        <UserTable />
+        <LabTable />
       </div>
     );
   }
