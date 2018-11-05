@@ -99,7 +99,6 @@ export default class CustomTable extends Component {
     labSource[dataIndex] = values;
     axios
       .post('/api/v1/lab/edit', {
-        floor: values.floor,
         name: values.name,
         code: values.code,
         vlan: values.vlan,

@@ -92,24 +92,9 @@ export default class EditDialog extends Component {
           title="编辑"
         >
           <Form direction="ver" field={this.field}>
-            <FormItem label="楼层：" {...formItemLayout}>
-              <Select
-                {...init('floor', {
-                  rules: [{ required: true, message: '必填选项' }],
-                })}
-                dataSource={this.floorData()}
-              ></Select>
-            </FormItem>
             <FormItem label="名称：" {...formItemLayout}>
               <Input
                 {...init('name', {
-                  rules: [{ required: true, message: '必填选项' }],
-                })}
-              />
-            </FormItem>
-            <FormItem label="代码：" {...formItemLayout}>
-              <Input
-                {...init('code', {
                   rules: [{ required: true, message: '必填选项' }],
                 })}
               />
