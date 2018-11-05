@@ -119,13 +119,6 @@ export default class AddDialog extends Component {
                 })}
               />
             </FormItem>
-            <FormItem label="管理员：" {...formItemLayout}>
-              <Input
-                {...init('admin', {
-                  rules: [{ required: true, message: '必填选项' }],
-                })}
-              />
-            </FormItem>
           </Form>
         </Dialog>
       </div>

@@ -104,7 +104,6 @@ export default class CustomTable extends Component {
         code: values.code,
         vlan: values.vlan,
         device: values.device,
-        admin: values.admin,
       })
       .then((response) => {
         this.setState({
@@ -142,7 +141,6 @@ export default class CustomTable extends Component {
         code: values.code,
         vlan: values.vlan,
         device: values.device,
-        admin: values.admin,
       })
       .then((response) => {
         this.setState({
