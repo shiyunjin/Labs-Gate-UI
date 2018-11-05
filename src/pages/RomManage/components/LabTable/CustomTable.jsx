@@ -119,6 +119,7 @@ export default class CustomTable extends Component {
         floor: values.floor,
         name: values.name,
         code: values.code,
+        vlan: values.vlan,
         device: values.device,
         admin: values.admin,
       })

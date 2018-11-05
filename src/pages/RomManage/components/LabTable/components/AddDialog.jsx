@@ -105,6 +105,13 @@ export default class AddDialog extends Component {
                 })}
               />
             </FormItem>
+            <FormItem label="VLAN：" {...formItemLayout}>
+              <Input
+                {...init('vlan', {
+                  rules: [{ required: true, message: '必填选项' }],
+                })}
+              />
+            </FormItem>
             <FormItem label="设备：" {...formItemLayout}>
               <Input
                 {...init('device', {
