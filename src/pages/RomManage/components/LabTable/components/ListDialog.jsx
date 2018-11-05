@@ -65,7 +65,7 @@ export default class ListDialog extends Component {
     axios
       .post("/api/v1/floor/edit", {
         id: render.id,
-        name: render.name,
+        name: value,
       })
       .then((response) => {
         this.setState({
