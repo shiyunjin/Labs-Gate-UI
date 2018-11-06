@@ -5,7 +5,7 @@
 const headerMenuConfig = [
   {
     name: '反馈',
-    path: 'https://github.com/shiyunjin/SchoolNetwork/issues',
+    path: 'https://github.com/shiyunjin/Labs-Gate/issues',
     external: true,
     newWindow: true,
     icon: 'message',
