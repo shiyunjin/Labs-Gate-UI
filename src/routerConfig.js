@@ -24,18 +24,19 @@ import Device from './pages/Device';
 import Security from './pages/Security';
 import User from './pages/User';
 import RomControlMachine from './pages/RomControlMachine';
+
 import NotFound from './pages/NotFound';
 
 var routerConfig = [
   {
-    path: '/exception/204',
-    component: Empty,
-    layout: BasicLayout,
-  },
-  {
     path: '/result/success',
     component: Result,
     layout: BasicLayout,
+  },
+  {
+    path: '/rom/control/:code',
+    layout: BasicLayout,
+    component: RomControlMachine,
   },
   {
     path: '/dashboard',
@@ -63,9 +64,9 @@ var routerConfig = [
     layout: UserLayout,
   },
   {
-    path: '/rom/control/:code',
+    path: '/exception/204',
+    component: Empty,
     layout: BasicLayout,
-    component: RomControlMachine,
   },
   {
     path: '/rom/control',

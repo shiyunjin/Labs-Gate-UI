@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import DownloadCard from './components/DownloadCard';
+import Track from './components/Track';
 
 export default class Device extends Component {
   static displayName = 'Device';
@@ -12,7 +12,7 @@ export default class Device extends Component {
   render() {
     return (
       <div className="device-page">
-        <DownloadCard />
+        <Track />
       </div>
     );
   }
