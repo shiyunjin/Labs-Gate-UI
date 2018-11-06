@@ -3,18 +3,7 @@ import { Input, Table, Pagination } from '@icedesign/base';
 import IceContainer from '@icedesign/container';
 import EditDialog from './components/EditDialog';
 import DeleteBalloon from './components/DeleteBalloon';
-
-const getData = () => {
-  return Array.from({ length: 5 }).map((item, index) => {
-    return {
-      code: 'dx603',
-      name: 'Page',
-      ip: '192.168.1.1',
-      id: `${index}`,
-      leader: '淘小宝',
-    };
-  });
-};
+import axios from "axios";
 
 export default class TableFilter extends Component {
   static displayName = 'TableFilter';
@@ -26,14 +15,21 @@ export default class TableFilter extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      current: 1,
+      devSource: [],
     };
-  }
+  };
 
-  handlePaginationChange = (current) => {
-    this.setState({
-      current,
-    });
+  componentDidMount() {
+    axios
+      .get('/api/v1/device')
+      .then((response) => {
+        this.setState({
+          devSource: response.data.data,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   onChange = (value) => {
@@ -41,16 +37,37 @@ export default class TableFilter extends Component {
   };
 
   deleteOn = (render) => {
-    const data = this.state.labSource;
+    const data = this.state.devSource;
 
     axios
-      .post("/api/v1/lab/del", {
-        floor: render.floor,
-        code: render.code,
+      .post("/api/v1/device/del", {
+        id: render.id,
       })
       .then((response) => {
         this.setState({
-          labSource: data.filter(i => i.code !== render.code),
+          devSource: data.filter(i => i.code !== render.code),
+        });
+      });
+  };
+
+  getFormValues = (dataIndex, values) => {
+    const { devSource } = this.state;
+    axios
+      .post('/api/v1/device/edit', {
+        id: values.id,
+        name: values.name,
+        code: values.code,
+        ip: values.ip,
+        username: values.username,
+        password: values.password,
+        super: values.super,
+      })
+      .then((response) => {
+        values.password = '';
+        values.super = '';
+        devSource[dataIndex] = values;
+        this.setState({
+          devSource,
         });
       });
   };
@@ -58,6 +75,10 @@ export default class TableFilter extends Component {
   renderOper = (value, index, render) => {
     return (
       <div>
+        <a
+          style={styles.link}
+        >接口</a>
+        <span style={styles.separator} />
         <EditDialog
           index={index}
           record={render}
@@ -72,12 +93,12 @@ export default class TableFilter extends Component {
   };
 
   render() {
-    const dataSource = getData();
+    const { devSource } = this.state;
 
     return (
       <IceContainer title="网络设备">
         <div style={styles.container}>
-          <Table dataSource={dataSource} hasBorder={false}>
+          <Table dataSource={devSource} hasBorder={false}>
             <Table.Column title="代码" dataIndex="code" width={100} />
             <Table.Column title="名称" dataIndex="name" width={100} />
             <Table.Column title="IP" dataIndex="ip" width={150} />

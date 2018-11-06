@@ -100,6 +100,7 @@ export default class EditDialog extends Component {
             </FormItem>
             <FormItem label="密码：" {...formItemLayout}>
               <Input
+                htmlType="password"
                 {...init('password', {
                   rules: [{ required: true, message: '必填选项' }],
                 })}
@@ -107,6 +108,7 @@ export default class EditDialog extends Component {
             </FormItem>
             <FormItem label="超级密码：" {...formItemLayout}>
               <Input
+                htmlType="password"
                 {...init('super', {
                   rules: [{ required: true, message: '必填选项' }],
                 })}

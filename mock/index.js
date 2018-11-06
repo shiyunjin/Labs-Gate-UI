@@ -382,5 +382,28 @@ module.exports = {
     "status": 200,
     "statusText": "ok",
   },
-  
+
+  'GET /api/v1/device': {
+    "status": 200,
+    "statusText": "ok",
+    "data": [
+      {
+        id: '111',
+        name: `中心交换机`,
+        code: 'core',
+        ip: '192.168.63.254',
+        username: 'jsj',
+      },
+    ],
+  },
+
+  'POST /api/v1/device/del': {
+    "status": 200,
+    "statusText": "ok",
+  },
+
+  'POST /api/v1/device/edit': {
+    "status": 200,
+    "statusText": "ok",
+  },
 };
