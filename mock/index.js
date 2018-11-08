@@ -394,6 +394,8 @@ module.exports = {
         code: 'core',
         ip: '192.168.63.254',
         username: 'jsj',
+        vlan: ['dx603','dx604'],
+        invalid: ["fast23","fast24"],
       },
     ],
   },
@@ -404,6 +406,11 @@ module.exports = {
   },
 
   'POST /api/v1/device/edit': {
+    "status": 200,
+    "statusText": "ok",
+  },
+
+  'POST /api/v1/device/interface': {
     "status": 200,
     "statusText": "ok",
   },

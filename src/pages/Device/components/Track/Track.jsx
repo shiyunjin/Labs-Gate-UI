@@ -3,6 +3,7 @@ import { Input, Table, Pagination } from '@icedesign/base';
 import IceContainer from '@icedesign/container';
 import EditDialog from './components/EditDialog';
 import DeleteBalloon from './components/DeleteBalloon';
+import ListDialog from './components/ListDialog';
 import axios from "axios";
 
 export default class TableFilter extends Component {
@@ -72,12 +73,31 @@ export default class TableFilter extends Component {
       });
   };
 
+  editOn = (dataIndex, vlan, invalid) => {
+    const { devSource } = this.state;
+    axios
+      .post('/api/v1/device/interface', {
+        id: devSource[dataIndex].id,
+        vlan: vlan,
+        code: invalid,
+      })
+      .then((response) => {
+        devSource[dataIndex]['vlan'] = vlan;
+        devSource[dataIndex]['invalid'] = invalid;
+        this.setState({
+          devSource,
+        });
+      });
+  };
+
   renderOper = (value, index, render) => {
     return (
       <div>
-        <a
-          style={styles.link}
-        >接口</a>
+        <ListDialog
+          index={index}
+          devSource={render}
+          editOn={this.editOn}
+        />
         <span style={styles.separator} />
         <EditDialog
           index={index}
