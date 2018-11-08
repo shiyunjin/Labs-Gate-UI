@@ -235,6 +235,7 @@ module.exports = {
   'GET /api/v1/rom/:code/machine': {
     "status": 200,
     "statusText": "ok",
+    "name": "教六603",
     "data": [
       {
         "ip":     "192.168.1.1",

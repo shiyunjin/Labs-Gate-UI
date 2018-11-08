@@ -24,6 +24,7 @@ export default class ReviewRequestTable extends Component {
       dataSource: [],
       loading: {},
       newStatus: {},
+      romName: "",
     };
   };
   
@@ -34,6 +35,7 @@ export default class ReviewRequestTable extends Component {
       .then((response) => {
         this.setState({
           dataSource: response.data.data,
+          romName: response.data.name,
         });
       })
       .catch((error) => {
@@ -183,10 +185,10 @@ export default class ReviewRequestTable extends Component {
   };
 
   render() {
-    const { dataSource } = this.state;
+    const { dataSource, romName } = this.state;
     
     return (
-      <IceContainer title="当前教室：教六603">
+      <IceContainer title={"当前教室：" + romName}>
         <Table dataSource={dataSource} hasBorder={false}>
           <Table.Column title="IP 地址" dataIndex="ip" />
           <Table.Column title="MAC地址" dataIndex="mac" />
