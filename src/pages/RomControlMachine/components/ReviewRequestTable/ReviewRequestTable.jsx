@@ -154,7 +154,7 @@ export default class ReviewRequestTable extends Component {
   delMachine(value, id, record) {
     const { code } = this.props;
     axios
-      .post('/api/v1/rom/' + code + '/machine/' + record.ip + '/delete')
+      .post('/api/v1/rom/' + code + '/machine/' + record.ip + '/del')
       .then((response) => {
         if (response.data.status === 200) {
           const { dataSource } = this.state;
