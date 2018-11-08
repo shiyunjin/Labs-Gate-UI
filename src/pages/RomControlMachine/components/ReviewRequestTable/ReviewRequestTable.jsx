@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import IceContainer from '@icedesign/container';
 import { Table, Button, Feedback } from '@icedesign/base';
 import DeleteBalloon from './components/DeleteBalloon';
+import Authorized from './../../../../utils/Authorized';
 import axios from 'axios';
 
 const statusColors = {
@@ -48,6 +49,10 @@ export default class ReviewRequestTable extends Component {
           loading={this.state.loading[record.ip]}
           onClick={(this.state.newStatus[record.ip] ? this.state.newStatus[record.ip] : record.status) == 'CLOSE' ? this.openNet.bind(this, record) : this.closeNet.bind(this, record)}
         >{this.state.loading[record.ip] ? '执行中' : (record.status == 'CLOSE' ? '开启网络' : '关闭网络')}</Button>
+        <Authorized authority="admin">
+          <span style={styles.separator} />
+          <DeleteBalloon handleRemove={this.delMachine.bind(this, value, index, record)} />
+        </Authorized>
       </div>
     );
   };
@@ -177,19 +182,12 @@ export default class ReviewRequestTable extends Component {
     return <span style={{ color: statusColors[this.state.newStatus[record.ip] ? this.state.newStatus[record.ip] : value] }}>{this.state.newStatus[record.ip] ? this.state.newStatus[record.ip] : value}</span>;
   };
 
-  renderDel = (value, index, record) => {
-    return  <DeleteBalloon
-              handleRemove={this.delMachine.bind(this, value, index, record)}
-            />;
-  };
-
   render() {
     const { dataSource } = this.state;
     
     return (
       <IceContainer title="当前教室：教六603">
         <Table dataSource={dataSource} hasBorder={false}>
-          <Table.Column title="删除" cell={this.renderDel} />
           <Table.Column title="IP 地址" dataIndex="ip" />
           <Table.Column title="MAC地址" dataIndex="mac" />
           <Table.Column title="备注" dataIndex="des" />
@@ -198,7 +196,7 @@ export default class ReviewRequestTable extends Component {
             dataIndex="status"
             cell={this.renderStatus}
           />
-          <Table.Column title="操作" cell={this.renderSentInfo} />
+          <Table.Column title="操作" cell={this.renderSentInfo} width={200} />
         </Table>
       </IceContainer>
     );
@@ -216,6 +214,14 @@ const styles = {
   },
   avatarWrapper: {
     marginRight: 10,
+  },
+  separator: {
+    margin: '0 8px',
+    display: 'inline-block',
+    height: '12px',
+    width: '1px',
+    verticalAlign: 'middle',
+    background: '#e8e8e8',
   },
   avatar: {
     borderRadius: '40px',
