@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { Input, Table, Pagination } from '@icedesign/base';
+import { Input, Table, Pagination, Button } from '@icedesign/base';
 import IceContainer from '@icedesign/container';
 import EditDialog from './components/EditDialog';
 import DeleteBalloon from './components/DeleteBalloon';
 import ListDialog from './components/ListDialog';
+import AddDialog from './components/AddDialog';
 import axios from "axios";
 
 export default class TableFilter extends Component {
@@ -90,6 +91,24 @@ export default class TableFilter extends Component {
       });
   };
 
+  addAction = (values) => {
+    axios
+      .post("/api/v1/device/add", {
+        name: values.name,
+        code: values.code,
+      })
+      .then((response) => {
+        this.setState({
+          devSource: [
+            ...this.state.devSource,
+            {
+              ...response.data.data,
+            },
+          ],
+        });
+      });
+  };
+
   renderOper = (value, index, render) => {
     return (
       <div>
@@ -125,6 +144,9 @@ export default class TableFilter extends Component {
             <Table.Column title="操作" cell={this.renderOper} width={200} />
           </Table>
         </div>
+        <AddDialog
+          addAction={this.addAction}
+        />
       </IceContainer>
     );
   }

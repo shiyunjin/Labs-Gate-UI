@@ -400,6 +400,20 @@ module.exports = {
     ],
   },
 
+  'POST /api/v1/device/add': {
+    "status": 200,
+    "statusText": "ok",
+    "data": {
+      id: '222',
+      name: `test交换机`,
+      code: 'test',
+      ip: '192.168.63.253',
+      username: 'jsj',
+      vlan: ['dx603','dx604'],
+      invalid: ["fast23","fast24"],
+    },
+  },
+
   'POST /api/v1/device/del': {
     "status": 200,
     "statusText": "ok",
