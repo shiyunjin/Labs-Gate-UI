@@ -102,7 +102,7 @@ export default class EditDialog extends Component {
               <Input
                 htmlType="password"
                 {...init('password', {
-                  rules: [{ required: true, message: '必填选项' }],
+                  rules: [{ required: false, message: '必填选项' }],
                 })}
               />
             </FormItem>
@@ -110,7 +110,7 @@ export default class EditDialog extends Component {
               <Input
                 htmlType="password"
                 {...init('super', {
-                  rules: [{ required: true, message: '必填选项' }],
+                  rules: [{ required: false, message: '必填选项' }],
                 })}
               />
             </FormItem>
