@@ -80,7 +80,7 @@ export default class TableFilter extends Component {
       .post('/api/v1/device/interface', {
         id: devSource[dataIndex].id,
         vlan: vlan,
-        code: invalid,
+        invalid: invalid,
       })
       .then((response) => {
         devSource[dataIndex]['vlan'] = vlan;
