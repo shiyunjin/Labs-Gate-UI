@@ -3,13 +3,6 @@ language: node_js
 node_js:
 - '8'
 script:
-- npm run lint:nofix
-
-deploy:
-  provider: script
-  skip_cleanup: true # 避免清空已安装的依赖
-  script: npm install && npm run build
-  on:
-    all_branches: true
-    repo: shiyunjin/Labs-Gate-UI
-    condition: $TRAVIS_BRANCH =~ ^master$
+- npm install
+- npm update
+- npm run build
