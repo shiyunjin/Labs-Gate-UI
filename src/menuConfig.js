@@ -39,6 +39,7 @@ const asideMenuConfig = [
       {
         name: '实验室管理',
         path: '/rom/manage',
+        authority: ['admin'],
       },
     ],
   },
@@ -52,13 +53,13 @@ const asideMenuConfig = [
     name: '网络状态',
     path: '/status',
     icon: 'table',
-    authority: ['user', 'admin'],
+    authority: ['admin'],
   },
   {
     name: '网络设备',
     path: '/device',
     icon: 'ul-list',
-    authority: ['user', 'admin'],
+    authority: ['admin'],
   },
   {
     name: '安全中心',
