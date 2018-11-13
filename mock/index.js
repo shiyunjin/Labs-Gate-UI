@@ -319,7 +319,7 @@ module.exports = {
         device: '计算机',
         vlan: 'dx403',
         machine: '1台',
-        admin: '时尚',
+        admin: ['syj'],
       },
       {
         floor: '444',
@@ -328,7 +328,7 @@ module.exports = {
         device: '计算机',
         vlan: 'dx403',
         machine: '1台',
-        admin: '时尚',
+        admin: ['syj'],
       },
       {
         floor: '333',
@@ -337,7 +337,7 @@ module.exports = {
         device: '计算机',
         vlan: 'dx403',
         machine: '1台',
-        admin: '时尚',
+        admin: ['syj'],
       },
       {
         floor: '444',
@@ -346,7 +346,7 @@ module.exports = {
         device: '计算机',
         vlan: 'dx403',
         machine: '1台',
-        admin: '时尚',
+        admin: ['syj'],
       },
       {
         floor: '333',
@@ -355,7 +355,7 @@ module.exports = {
         device: '计算机',
         vlan: 'dx403',
         machine: '1台',
-        admin: '时尚',
+        admin: ['syj'],
       },
     ],
   },
@@ -380,6 +380,11 @@ module.exports = {
   },
 
   'POST /api/v1/lab/edit': {
+    "status": 200,
+    "statusText": "ok",
+  },
+
+  'POST /api/v1/lab/admin': {
     "status": 200,
     "statusText": "ok",
   },

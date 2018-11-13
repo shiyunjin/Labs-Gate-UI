@@ -7,6 +7,7 @@ import ListDialog from './components/ListDialog';
 import AddFloorDialog from './components/AddFloorDialog';
 import DeleteBalloon from './components/DeleteBalloon';
 import EditDialog from './components/EditDialog';
+import AdminDialog from './components/AdminDialog';
 import axios from 'axios';
 
 const { Row, Col } = Grid;
@@ -88,6 +89,12 @@ export default class CustomTable extends Component {
           getFormValues={this.getFormValues}
           floorSource={this.state.floorSource}
         />
+        <AdminDialog
+          index={index}
+          record={render}
+          getFormValues={this.getFormValues}
+          editOn={this.editOn}
+        />
         <DeleteBalloon
           handleRemove={() => this.deleteOn(render)}
         />
@@ -155,6 +162,31 @@ export default class CustomTable extends Component {
       });
   };
 
+  editOn = (dataIndex, admin) => {
+    const { labSource } = this.state;
+    axios
+      .post('/api/v1/lab/admin', {
+        id: labSource[dataIndex].id,
+        admin: admin,
+      })
+      .then((response) => {
+        labSource[dataIndex]['admin'] = admin;
+        this.setState({
+          labSource,
+        });
+      });
+  };
+
+  renderAdmin = (value, index, render) => {
+    const adminNum = value.length;
+    if(adminNum > 3) {
+      return "当前有"+adminNum+"位管理员";
+    } else {
+        return value.join(" , ");
+    }
+    return ;
+  };
+
   render() {
     return (
       <IceContainer title="实验室管理">
@@ -183,8 +215,8 @@ export default class CustomTable extends Component {
           <Table.Column title="代码" dataIndex="code" width={100} />
           <Table.Column title="设备" dataIndex="device" width={100} />
           <Table.Column title="机器数" dataIndex="machine" width={100} />
-          <Table.Column title="管理员" dataIndex="admin" width={150} />
-          <Table.Column title="操作" width={100} cell={this.renderOper} />
+          <Table.Column title="管理员" dataIndex="admin" width={150} cell={this.renderAdmin} />
+          <Table.Column title="操作" width={150} cell={this.renderOper} />
         </Table>
       </IceContainer>
     );
