@@ -166,7 +166,8 @@ export default class CustomTable extends Component {
     const { labSource } = this.state;
     axios
       .post('/api/v1/lab/admin', {
-        id: labSource[dataIndex].id,
+        floor: labSource[dataIndex].floor,
+        code: labSource[dataIndex].code,
         admin: admin,
       })
       .then((response) => {
