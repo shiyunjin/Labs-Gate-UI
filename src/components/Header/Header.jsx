@@ -105,9 +105,11 @@ export default class Header extends PureComponent {
             className="user-profile-menu"
           >
             <ul>
-              <li className="user-profile-menu-item">
-                <FoundationSymbol type="repair" size="small" />设置
-              </li>
+              <Link to="/security">
+                <li className="user-profile-menu-item">
+                  <FoundationSymbol type="repair" size="small" />设置
+                </li>
+              </Link>
               <li
                 className="user-profile-menu-item"
                 onClick={this.props.handleLogout}
