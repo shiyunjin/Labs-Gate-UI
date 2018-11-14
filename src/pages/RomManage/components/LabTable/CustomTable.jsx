@@ -204,7 +204,7 @@ export default class CustomTable extends Component {
             />
             <ListDialog
               floorSource={this.state.floorSource}
-              setFloorAction={this.state.setFloorAction}
+              setFloorAction={this.setFloorAction}
             />
           </Col>
         </Row>
