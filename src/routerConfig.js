@@ -10,7 +10,6 @@ import BlankLayout from './layouts/BlankLayout';
 import HomeLayout from './layouts/HomeLayout';
 import UserLayout from './layouts/UserLayout';
 import UserLogin from './pages/UserLogin';
-import Dashboard from './pages/Dashboard';
 import Result from './pages/Result';
 import Fail from './pages/Fail';
 import ServerError from './pages/ServerError';
@@ -37,11 +36,6 @@ var routerConfig = [
     path: '/rom/control/:code',
     layout: BasicLayout,
     component: RomControlMachine,
-  },
-  {
-    path: '/dashboard',
-    component: Dashboard,
-    layout: BasicLayout,
   },
   {
     path: '/exception/500',

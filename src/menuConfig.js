@@ -21,27 +21,16 @@ const headerMenuConfig = [
 
 const asideMenuConfig = [
   {
-    name: 'Dashboard',
-    path: '/dashboard',
+    name: '网络管理',
+    path: '/rom/control',
     icon: 'home2',
     authority: ['user', 'admin'],
   },
   {
-    name: '实验室控制',
-    path: '/rom',
+    name: '实验室管理',
+    path: '/rom/manage',
     icon: 'chart1',
-    authority: ['user', 'admin'],
-    children: [
-      {
-        name: '网络管理',
-        path: '/rom/control',
-      },
-      {
-        name: '实验室管理',
-        path: '/rom/manage',
-        authority: ['admin'],
-      },
-    ],
+    authority: ['admin'],
   },
   {
     name: '用户管理',

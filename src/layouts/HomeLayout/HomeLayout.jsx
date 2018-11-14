@@ -21,8 +21,8 @@ export default class HomeLayout extends Component {
             />
           }
         >
-          {/* 首页默认重定向到 /dashboard */}
-          <Redirect exact from="/" to="/dashboard" />
+          {/* 首页默认重定向到 /rom/control */}
+          <Redirect exact from="/" to="/rom/control" />
         </Authorized>
       </Switch>;
   }
