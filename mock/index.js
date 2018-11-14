@@ -2,7 +2,7 @@ module.exports = {
   'GET /api/v1/profile': {
     name: '石蕴金',
     department: 'user',
-    avatar: 'https://img.alicdn.com/tfs/TB1L6tBXQyWBuNjy0FpXXassXXa-80-80.png',
+    avatar: '/public/avatar.png',
   },
 
   'POST /api/v1/login': (req, res) => {

@@ -9,6 +9,7 @@ import cx from 'classnames';
 import { Link } from 'react-router-dom';
 import { headerMenuConfig } from '../../menuConfig';
 import Logo from '../Logo';
+import Avatar from '../images/TB1L6tBXQyWBuNjy0FpXXassXXa-80-80.png';
 
 export default class Header extends PureComponent {
   render() {
@@ -76,10 +77,7 @@ export default class Header extends PureComponent {
                 <IceImg
                   height={40}
                   width={40}
-                  src={
-                    profile.avatar ||
-                    'https://img.alicdn.com/tfs/TB1L6tBXQyWBuNjy0FpXXassXXa-80-80.png'
-                  }
+                  src={Avatar}
                   className="user-avatar"
                 />
                 <div className="user-profile" style={{ textAlign: 'left' }}>
