@@ -9,6 +9,12 @@ University laboratory network management system UI
 
 `npm start`
 
+## Mock User
+
+`admin && admin`
+
+`user && user`
+
 # Build
 `npm install`
 
