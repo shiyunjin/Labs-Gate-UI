@@ -69,7 +69,7 @@ export const userLogin = (params) => {
 
         reloadAuthorized();
 
-        dispatch(push('/dashboard'));
+        dispatch(push('/rom/control'));
       } else {
         Feedback.toast.error('账号或者密码错误');
       }
