@@ -33,18 +33,13 @@ var routerConfig = [
     layout: BasicLayout,
   },
   {
-    path: '/rom/control/:code',
+    path: '/result/fail',
+    component: Fail,
     layout: BasicLayout,
-    component: RomControlMachine,
   },
   {
     path: '/exception/500',
     component: ServerError,
-    layout: BasicLayout,
-  },
-  {
-    path: '/result/fail',
-    component: Fail,
     layout: BasicLayout,
   },
   {
@@ -53,14 +48,14 @@ var routerConfig = [
     layout: BasicLayout,
   },
   {
-    path: '/user/login',
-    component: UserLogin,
-    layout: UserLayout,
-  },
-  {
     path: '/exception/204',
     component: Empty,
     layout: BasicLayout,
+  },
+  {
+    path: '/rom/control/:code',
+    layout: BasicLayout,
+    component: RomControlMachine,
   },
   {
     path: '/rom/control',
@@ -86,6 +81,11 @@ var routerConfig = [
     path: '/security',
     layout: BasicLayout,
     component: Security,
+  },
+  {
+    path: '/user/login',
+    component: UserLogin,
+    layout: UserLayout,
   },
   {
     path: '/user',
