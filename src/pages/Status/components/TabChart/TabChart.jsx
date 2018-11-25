@@ -3,6 +3,7 @@ import IceContainer from '@icedesign/container';
 import { Tab } from '@icedesign/base';
 import SeriesLine from './SeriesLine';
 import BasicLine from './BasicLine';
+import StackedBarChart from './components/StackedBarChart';
 
 const TabPane = Tab.TabPane;
 
@@ -27,10 +28,10 @@ export default class TabChart extends Component {
       <div className="tab-chart" style={styles.container}>
         <IceContainer style={styles.card}>
           <Tab onChange={this.handleChange}>
-            <TabPane key="1" tab="收益走势">
-              <SeriesLine />
+            <TabPane key="1" tab="设备：core">
+              <StackedBarChart />
             </TabPane>
-            <TabPane key="2" tab="成交趋势">
+            <TabPane key="2" tab="设备：test">
               <BasicLine />
             </TabPane>
           </Tab>
