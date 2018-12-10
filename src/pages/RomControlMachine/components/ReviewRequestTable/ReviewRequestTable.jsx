@@ -44,13 +44,14 @@ export default class ReviewRequestTable extends Component {
   };
 
   renderSentInfo = (value, index, record) => {
+    console.info(this.getStatus(value, index, record));
     return (
       <div style={styles.sentInfo}>
         <Button
           type={this.state.loading[record.ip] ? "secondary" : "primary"}
           loading={this.state.loading[record.ip]}
-          onClick={(this.state.newStatus[record.ip] ? this.state.newStatus[record.ip] : record.status) == 'CLOSE' ? this.openNet.bind(this, record) : this.closeNet.bind(this, record)}
-        >{this.state.loading[record.ip] ? '执行中' : (record.status == 'CLOSE' ? '开启网络' : '关闭网络')}</Button>
+          onClick={this.getStatus(value, index, record) == 'CLOSE' ? this.openNet.bind(this, record) : this.closeNet.bind(this, record)}
+        >{this.state.loading[record.ip] ? '执行中' : (this.getStatus(value, index, record) == 'CLOSE' ? '开启网络' : '关闭网络')}</Button>
         <Authorized authority="admin">
           <span style={styles.separator} />
           <DeleteBalloon handleRemove={this.delMachine.bind(this, value, index, record)} />
@@ -179,6 +180,10 @@ export default class ReviewRequestTable extends Component {
         console.log(error);
       });
   };
+
+  getStatus = (value, index, record) => {
+    return this.state.newStatus[record.ip] ? this.state.newStatus[record.ip] : record.status;
+  }
 
   renderStatus = (value, index, record) => {
     return <span style={{ color: statusColors[this.state.newStatus[record.ip] ? this.state.newStatus[record.ip] : value] }}>{this.state.newStatus[record.ip] ? this.state.newStatus[record.ip] : value}</span>;
