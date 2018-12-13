@@ -29,7 +29,7 @@ export default class TabChart extends Component {
         <IceContainer style={styles.card}>
           <Tab onChange={this.handleChange}>
             <TabPane key="1" tab="设备：core">
-              <StackedBarChart />
+              <StackedBarChart code="core" />
             </TabPane>
             <TabPane key="2" tab="设备：test">
               <BasicLine />
