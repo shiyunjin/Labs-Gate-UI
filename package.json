@@ -16,7 +16,7 @@
     "@icedesign/menu": "^0.1.1",
     "@icedesign/skin": "^0.1.0",
     "@icedesign/styled-menu": "^0.1.1",
-    "axios": "^0.17.1",
+    "axios": "^0.18.1",
     "bizcharts": "latest",
     "classnames": "^2.2.5",
     "enquire-js": "^0.1.2",
